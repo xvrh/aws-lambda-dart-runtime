@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:aws_lambda_dart_runtime/aws_lambda_dart_runtime.dart';
 
 import 'package:aws_lambda_dart_runtime/client/client.dart';
+import 'package:aws_lambda_dart_runtime/runtime/environment.dart';
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:aws_lambda_dart_runtime/runtime/context.dart';
 import 'package:aws_lambda_dart_runtime/runtime/exception.dart';
@@ -40,6 +41,7 @@ class _RuntimeHandler {
 /// Note: You can register an
 class Runtime {
   late final Client _client;
+  late final Environment _env;
 
   static final Runtime _instance = Runtime._internal();
   factory Runtime() => _instance;
@@ -47,13 +49,17 @@ class Runtime {
   final Map<String, _RuntimeHandler> _handlers = {};
 
   Runtime._internal() {
-    _client = Client();
+    _env = Environment();
+    _client = Client(environment: _env);
   }
 
   /// Lists the registered handlers by name.
   /// The name is a simple [String] which reflects
   /// the name of the trigger in the Lambda Execution API.
   List<String> get handlers => _handlers.keys.toList();
+
+  /// Get the runtime environment.
+  Environment get environment => _env;
 
   /// Checks if a specific handlers has been registered
   /// with the runtime.
@@ -99,10 +105,10 @@ class Runtime {
       // creating the new context
       final context = Context.fromNextInvocation(nextInvocation);
 
-      final func = _handlers[context.handler];
+      final func = _handlers[environment.handler];
       if (func == null) {
         throw RuntimeException(
-            'No handler with name "${context.handler}" registered in runtime!');
+            'No handler with name "${environment.handler}" registered in runtime!');
       }
       final event = Event.fromHandler(func.type, nextInvocation.response);
       final result = await func.handler(context, event);

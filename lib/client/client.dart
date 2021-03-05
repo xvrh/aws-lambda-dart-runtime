@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:aws_lambda_dart_runtime/runtime/environment.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
@@ -103,26 +104,23 @@ class InvocationError {
 /// It is implemented as a singleton whereby [Client.instance]
 /// always returns the already instantiated client.
 class Client {
-  late final http.Client _client;
+  final http.Client _client = http.Client();
+  final Environment environment;
 
-  static final Client _instance = Client._internal();
-  factory Client() => _instance;
+  factory Client({Environment? environment}) {
+    environment ??= Environment();
 
-  Client._internal() {
-    _client = http.Client();
+    return Client.raw(environment: environment);
   }
 
-  static const _kruntimeApiVersion = '2018-06-01';
-  static const _kAWSLambdaHandler = '_HANDLER';
-  static const _kAWSLambdaRuntimeAPI = 'AWS_LAMBDA_RUNTIME_API';
+  Client.raw({required this.environment}) : assert(environment != null);
 
-  static String get runtimeApi => Platform.environment[_kAWSLambdaRuntimeAPI]!;
-  static String get handlerName => Platform.environment[_kAWSLambdaHandler]!;
+  static const _kruntimeApiVersion = '2018-06-01';
 
   /// Get the next invocation from the AWS Lambda Runtime Interface (see https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html).
   Future<NextInvocation> getNextInvocation() async {
     final response = await _client.get(Uri.parse(
-        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/next'));
+        'http://${environment.runtimeAPI}//$_kruntimeApiVersion/invocation/next'));
     return NextInvocation.fromResponse(response);
   }
 
@@ -131,7 +129,7 @@ class Client {
       String requestId, dynamic payload) async {
     return await _client.post(
       Uri.parse(
-        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/$requestId/response',
+        'http://${environment.runtimeAPI}/$_kruntimeApiVersion/runtime/invocation/$requestId/response',
       ),
       body: jsonEncode(payload),
     );
@@ -144,7 +142,7 @@ class Client {
       String requestId, InvocationError err) async {
     return await _client.post(
       Uri.parse(
-        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/$requestId/error',
+        'http://${environment.runtimeAPI}/$_kruntimeApiVersion/runtime/invocation/$requestId/error',
       ),
       body: jsonEncode(err),
       headers: {'Content-type': 'application/json'},
