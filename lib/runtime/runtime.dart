@@ -39,14 +39,12 @@ class _RuntimeHandler {
 ///
 /// Note: You can register an
 class Runtime {
-  Client _client;
+  late final Client _client;
 
-  static final Runtime _singleton = Runtime._internal();
+  static final Runtime _instance = Runtime._internal();
+  factory Runtime() => _instance;
+
   final Map<String, _RuntimeHandler> _handlers = {};
-
-  factory Runtime() {
-    return _singleton;
-  }
 
   Runtime._internal() {
     _client = Client();
@@ -71,7 +69,7 @@ class Runtime {
 
   /// Unregister a handler function [Handler] with [name].
   Handler deregisterHandler(String name) =>
-      _handlers.remove(name).handler as Handler;
+      _handlers.remove(name)?.handler as Handler;
 
   /// Register an new event to be ingested by a handler.
   /// The type should reflect your type in your handler definition [Handler<T>].
@@ -112,7 +110,7 @@ class Runtime {
       await _client.postInvocationResponse(context.requestId, result);
     } catch (error, stacktrace) {
       await _client.postInvocationError(
-          nextInvocation?.requestId, InvocationError(error, stacktrace));
+          nextInvocation.requestId, InvocationError(error, stacktrace));
     }
   }
 }

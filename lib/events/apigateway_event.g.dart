@@ -12,17 +12,13 @@ AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) {
     path: json['path'] as String,
     httpMethod: json['httpMethod'] as String,
     body: json['body'] as String,
-    headers: json['headers'] == null
-        ? null
-        : AwsApiGatewayEventHeaders.fromJson(
-            json['headers'] as Map<String, dynamic>),
+    headers: AwsApiGatewayEventHeaders.fromJson(
+        json['headers'] as Map<String, dynamic>),
     queryStringParameters:
         json['queryStringParameters'] as Map<String, dynamic>,
     stageVariables: json['stageVariables'] as Map<String, dynamic>,
-    requestContext: json['requestContext'] == null
-        ? null
-        : AwsApiGatewayEventRequestContext.fromJson(
-            json['requestContext'] as Map<String, dynamic>),
+    requestContext: AwsApiGatewayEventRequestContext.fromJson(
+        json['requestContext'] as Map<String, dynamic>),
     pathParameters: json['pathParameters'] as Map<String, dynamic>,
   );
 }

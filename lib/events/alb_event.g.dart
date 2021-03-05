@@ -8,9 +8,8 @@ part of 'alb_event.dart';
 
 AwsALBEvent _$AwsALBEventFromJson(Map<String, dynamic> json) {
   return AwsALBEvent(
-    context: json['context'] == null
-        ? null
-        : AwsALBEventContext.fromJson(json['context'] as Map<String, dynamic>),
+    context:
+        AwsALBEventContext.fromJson(json['context'] as Map<String, dynamic>),
     httpMethod: json['httpMethod'] as String,
     path: json['path'] as String,
     headers: json['headers'] as Map<String, dynamic>,

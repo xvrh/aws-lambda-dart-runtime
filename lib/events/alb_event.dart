@@ -60,20 +60,20 @@ class AwsALBEvent extends Event {
 /// They should reflect the informationen needed here.
 class AwsALBResponse {
   /// The body of the HTTP Response send from the API Gateway to the client.
-  String body;
+  String body = '';
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
-  bool isBase64Encoded;
+  bool isBase64Encoded = false;
 
   /// HTTP status code of the response of the API Gateway to the client.
   /// The default status code is `200 OK`.
-  int statusCode;
+  int statusCode = HttpStatus.ok;
 
   /// Description of the send HTTP status code.
-  String statusDescription;
+  String statusDescription = '200 OK';
 
   /// The HTTP headers that should be send with the response to the client.
-  Map<String, String> headers;
+  Map<String, String> headers = {'Content-Type': 'text/html; charset=utf-8'};
 
   /// Returns the JSON representation of the response. This is called by
   /// the JSON encoder to produce the response.
@@ -87,10 +87,10 @@ class AwsALBResponse {
 
   factory AwsALBResponse.fromString(
     String body, {
-    bool isBase64Encoded,
-    int statusCode,
-    String statusDescription,
-    Map<String, String> headers,
+    isBase64Encoded,
+    statusCode,
+    statusDescription,
+    headers,
   }) {
     return AwsALBResponse(
         body: body,
@@ -103,18 +103,12 @@ class AwsALBResponse {
   /// The Response that should be returned to the Application Load Balancer.
   /// It is constructed with some default values for the optional parameters.
   AwsALBResponse({
-    String body,
-    Map<String, String> headers,
-    bool isBase64Encoded,
-    int statusCode,
-    String statusDescription,
-  }) {
-    this.body = body ?? '';
-    this.isBase64Encoded = isBase64Encoded ?? false;
-    this.headers = headers ?? {'Content-Type': 'text/html; charset=utf-8'};
-    this.statusCode = statusCode ?? HttpStatus.ok;
-    this.statusDescription = statusDescription ?? '200 OK';
-  }
+    body,
+    headers,
+    isBase64Encoded,
+    statusCode,
+    statusDescription,
+  });
 }
 
 /// AWS ALB Event Request Context ...

@@ -26,11 +26,9 @@ Map<String, dynamic> _$AwsKinesisFirehoseDataToJson(
 AwsKinesisFirehoseDataEvent _$AwsKinesisFirehoseDataEventFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisFirehoseDataEvent(
-    records: (json['records'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AwsKinesisFirehoseData.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    records: (json['records'] as List<dynamic>)
+        .map((e) => AwsKinesisFirehoseData.fromJson(e as Map<String, dynamic>))
+        .toList(),
     invocationId: json['invocationId'] as String,
     deliveryStreamArn: json['deliveryStreamArn'] as String,
     region: json['region'] as String,

@@ -103,29 +103,26 @@ class InvocationError {
 /// It is implemented as a singleton whereby [Client.instance]
 /// always returns the already instantiated client.
 class Client {
-  http.Client _client;
+  late final http.Client _client;
 
-  static final Client _singleton = Client._internal();
-
-  factory Client() {
-    return _singleton;
-  }
+  static final Client _instance = Client._internal();
+  factory Client() => _instance;
 
   Client._internal() {
     _client = http.Client();
   }
 
-  static const runtimeApiVersion = '2018-06-01';
+  static const _kruntimeApiVersion = '2018-06-01';
+  static const _kAWSLambdaHandler = '_HANDLER';
+  static const _kAWSLambdaRuntimeAPI = 'AWS_LAMBDA_RUNTIME_API';
 
-  static String get runtimeApi =>
-      Platform.environment['AWS_LAMBDA_RUNTIME_API'];
-
-  static String get handlerName => Platform.environment['_HANDLER'];
+  static String get runtimeApi => Platform.environment[_kAWSLambdaRuntimeAPI]!;
+  static String get handlerName => Platform.environment[_kAWSLambdaHandler]!;
 
   /// Get the next invocation from the AWS Lambda Runtime Interface (see https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html).
   Future<NextInvocation> getNextInvocation() async {
     final response = await _client.get(Uri.parse(
-        'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/next'));
+        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/next'));
     return NextInvocation.fromResponse(response);
   }
 
@@ -134,7 +131,7 @@ class Client {
       String requestId, dynamic payload) async {
     return await _client.post(
       Uri.parse(
-        'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/$requestId/response',
+        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/$requestId/response',
       ),
       body: jsonEncode(payload),
     );
@@ -147,7 +144,7 @@ class Client {
       String requestId, InvocationError err) async {
     return await _client.post(
       Uri.parse(
-        'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/$requestId/error',
+        'http://$runtimeApi/$_kruntimeApiVersion/runtime/invocation/$requestId/error',
       ),
       body: jsonEncode(err),
       headers: {'Content-type': 'application/json'},

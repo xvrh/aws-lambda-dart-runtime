@@ -49,11 +49,10 @@ Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
 AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(
     Map<String, dynamic> json) {
   return AwsDynamoDBUpdateEvent(
-    records: (json['Records'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AwsDynamoDBUpdateEventRecord.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    records: (json['Records'] as List<dynamic>)
+        .map((e) =>
+            AwsDynamoDBUpdateEventRecord.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
