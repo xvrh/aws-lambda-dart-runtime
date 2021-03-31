@@ -20,27 +20,28 @@ class NextInvocation {
   final String requestId;
 
   /// Deadline milliseconds is the setting for ultimate cancelation of the invocation.
-  final String deadlineMs;
+  final String? deadlineMs;
 
   /// Invoked function ARN is the identifier of the function.
-  final String invokedFunctionArn;
+  final String? invokedFunctionArn;
 
   /// Tracing id is the identifier for tracing like X-Ray.
-  final String traceId;
+  final String? traceId;
 
   /// Client context is the context that is provided to the function.
-  final String clientContext;
+  final String? clientContext;
 
   /// Cognito identity is the identity that maybe is used for authorizing the request.
-  final String cognitoIdentity;
+  final String? cognitoIdentity;
 
   /// Digesting a [HttpClientResponse] into a [NextInvocation].
   static Future<NextInvocation> fromResponse(
       HttpClientResponse response) async {
     return NextInvocation(
-        response: json
-            .decode((await response.transform(Utf8Decoder()).toList()).first),
-        requestId: response.headers.value(runtimeRequestId),
+        response: json.decode(
+                (await response.transform(Utf8Decoder()).toList()).first) ??
+            {},
+        requestId: response.headers.value(runtimeRequestId)!,
         deadlineMs: response.headers.value(runtimeDeadlineMs),
         invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn),
         traceId: response.headers.value(runtimeTraceId),
@@ -49,14 +50,13 @@ class NextInvocation {
   }
 
   const NextInvocation(
-      {this.requestId,
+      {required this.requestId,
       this.deadlineMs,
       this.traceId,
       this.clientContext,
       this.cognitoIdentity,
       this.invokedFunctionArn,
-      this.response})
-      : assert(requestId != null);
+      required this.response});
 }
 
 /// Invocation result is the result that the invoked handler
@@ -71,9 +71,7 @@ class InvocationResult {
   /// any json-encodable data type.
   final dynamic body;
 
-  const InvocationResult(this.requestId, this.body)
-      : assert(requestId != null),
-        assert(body != null);
+  const InvocationResult(this.requestId, this.body);
 }
 
 /// Invocation error occurs when there has been an
@@ -103,7 +101,7 @@ class InvocationError {
 /// It is implemented as a singleton whereby [Client.instance]
 /// always returns the already instantiated client.
 class Client {
-  HttpClient _client;
+  final HttpClient _client = HttpClient();
 
   static final Client _singleton = Client._internal();
 
@@ -111,9 +109,7 @@ class Client {
     return _singleton;
   }
 
-  Client._internal() {
-    _client = HttpClient();
-  }
+  Client._internal();
 
   static const runtimeApiVersion = '2018-06-01';
   static final runtimeApi = Platform.environment["AWS_LAMBDA_RUNTIME_API"];
@@ -153,11 +149,7 @@ class Client {
         'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/$requestId/error',
       ),
     );
-    request.add(
-        utf8.encode(
-            json.encode(err)
-        )
-    );
+    request.add(utf8.encode(json.encode(err)));
 
     return await request.close();
   }

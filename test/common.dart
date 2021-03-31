@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 
 class MockHttpClientResponse extends Mock implements HttpClientResponse {
   MockHttpClientResponse(this.statusCode,
-      {this.result, this.headers, this.body});
+      {required this.result, required this.headers, required this.body});
 
   @override
   final int statusCode;
@@ -45,5 +45,5 @@ class MockHttpHeaders extends HttpHeaders {
   void set(String name, Object value, {bool preserveHeaderCase = false}) {}
 
   @override
-  String value(String name) => null;
+  String? value(String name) => null;
 }

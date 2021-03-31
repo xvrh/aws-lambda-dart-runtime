@@ -22,7 +22,10 @@ class AwsAlexaEventHeader {
 
   Map<String, dynamic> toJson() => _$AwsAlexaEventHeaderToJson(this);
 
-  const AwsAlexaEventHeader({this.namespace, this.payloadVersion, this.name});
+  const AwsAlexaEventHeader(
+      {required this.namespace,
+      required this.payloadVersion,
+      required this.name});
 }
 
 /// Event send by an Application Load Balancer to the
@@ -42,5 +45,5 @@ class AwsAlexaEvent {
 
   Map<String, dynamic> toJson() => _$AwsAlexaEventToJson(this);
 
-  const AwsAlexaEvent({this.header, this.payload});
+  const AwsAlexaEvent({required this.header, required this.payload});
 }

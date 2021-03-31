@@ -15,9 +15,7 @@ class _RuntimeHandler {
   final Type type;
   final dynamic handler;
 
-  const _RuntimeHandler(this.type, this.handler)
-      : assert(type != null),
-        assert(handler != null);
+  const _RuntimeHandler(this.type, this.handler);
 }
 
 /// A Runtime manages the interface to the Lambda API.
@@ -37,8 +35,8 @@ class _RuntimeHandler {
 /// ```
 ///
 /// Note: You can register an
-class Runtime<T> {
-  Client _client;
+class Runtime {
+  final Client _client = Client();
 
   static final Runtime _singleton = Runtime._internal();
   final Map<String, _RuntimeHandler> _handlers = {};
@@ -47,14 +45,12 @@ class Runtime<T> {
     return _singleton;
   }
 
-  Runtime._internal() {
-    _client = Client();
-  }
+  Runtime._internal();
 
   /// Lists the registered handlers by name.
   /// The name is a simple [String] which reflects
   /// the name of the trigger in the Lambda Execution API.
-  List<String> get handlers => _handlers.keys;
+  List<String> get handlers => _handlers.keys.toList();
 
   /// Checks if a specific handlers has been registered
   /// with the runtime.
@@ -63,14 +59,15 @@ class Runtime<T> {
   /// Register a handler function [Handler<T>] with [name]
   /// which digests an event [T].
   Handler<T> registerHandler<T>(String name, Handler<T> handler) {
-    _handlers[name] = _RuntimeHandler(T, handler);
+    var runtimeHandler = _handlers[name] = _RuntimeHandler(T, handler);
 
-    return _handlers[name].handler;
+    return runtimeHandler.handler;
   }
 
   /// Unregister a handler function [Handler<T>] with [name].
-  Handler<T> deregisterHandler<T>(String name) =>
-      _handlers.remove(name).handler;
+  Handler<T> deregisterHandler<T>(String name) {
+    return _handlers.remove(name)?.handler;
+  }
 
   /// Register an new event to be ingested by a handler.
   /// The type should reflect your type in your handler definition [Handler<T>].
@@ -94,7 +91,7 @@ class Runtime<T> {
   /// and the error is posted via [_client.postInvocationError(err)] to the API.
   void invoke() async {
     do {
-      NextInvocation nextInvocation;
+      NextInvocation? nextInvocation;
 
       try {
         // get the next invocation
@@ -104,8 +101,9 @@ class Runtime<T> {
         final context = Context.fromNextInvocation(nextInvocation);
 
         final func = _handlers[context.handler];
-        if(func == null) {
-          throw RuntimeException('No handler with name "${context.handler}" registered in runtime!');
+        if (func == null) {
+          throw RuntimeException(
+              'No handler with name "${context.handler}" registered in runtime!');
         }
         final event =
             Event.fromHandler(func.type, await nextInvocation.response);
@@ -113,8 +111,10 @@ class Runtime<T> {
 
         await _client.postInvocationResponse(result);
       } on Exception catch (error, stacktrace) {
-        await _client.postInvocationError(
-            nextInvocation.requestId, InvocationError(error, stacktrace));
+        if (nextInvocation != null) {
+          await _client.postInvocationError(
+              nextInvocation.requestId, InvocationError(error, stacktrace));
+        }
       }
 
       nextInvocation = null;

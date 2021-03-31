@@ -20,5 +20,5 @@ class AwsCloudwatchLogEvent {
 
   Map<String, dynamic> toJson() => _$AwsCloudwatchLogEventToJson(this);
 
-  const AwsCloudwatchLogEvent({this.awslogs});
+  const AwsCloudwatchLogEvent({required this.awslogs});
 }

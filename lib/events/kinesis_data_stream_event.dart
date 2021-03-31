@@ -32,11 +32,11 @@ class AwsKinesisDataStream {
   Map<String, dynamic> toJson() => _$AwsKinesisDataStreamToJson(this);
 
   const AwsKinesisDataStream(
-      {this.partitionKey,
-      this.kinesisSchemaVersion,
-      this.data,
-      this.sequenceNumber,
-      this.approximateArrivalTimestamp});
+      {required this.partitionKey,
+      required this.kinesisSchemaVersion,
+      required this.data,
+      required this.sequenceNumber,
+      required this.approximateArrivalTimestamp});
 }
 
 /// Kinesis record that is send via [AwsKinesisEvent].
@@ -81,14 +81,14 @@ class AwsKinesisDataStreamRecord {
   Map<String, dynamic> toJson() => _$AwsKinesisDataStreamRecordToJson(this);
 
   const AwsKinesisDataStreamRecord(
-      {this.kinesis,
-      this.invokeIdentityArn,
-      this.eventName,
-      this.eventID,
-      this.eventSource,
-      this.eventVersion,
-      this.eventSourceARN,
-      this.awsRegion});
+      {required this.kinesis,
+      required this.invokeIdentityArn,
+      required this.eventName,
+      required this.eventID,
+      required this.eventSource,
+      required this.eventVersion,
+      required this.eventSourceARN,
+      required this.awsRegion});
 }
 
 /// Kinesis Event ...
@@ -104,5 +104,5 @@ class AwsKinesisDataStreamEvent {
 
   Map<String, dynamic> toJson() => _$AwsKinesisDataStreamEventToJson(this);
 
-  const AwsKinesisDataStreamEvent({this.records});
+  const AwsKinesisDataStreamEvent({required this.records});
 }

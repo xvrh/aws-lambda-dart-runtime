@@ -35,11 +35,9 @@ Map<String, dynamic> _$AwsSQSEventRecordToJson(AwsSQSEventRecord instance) =>
 
 AwsSQSEvent _$AwsSQSEventFromJson(Map<String, dynamic> json) {
   return AwsSQSEvent(
-    records: (json['Records'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AwsSQSEventRecord.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    records: (json['Records'] as List<dynamic>)
+        .map((e) => AwsSQSEventRecord.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

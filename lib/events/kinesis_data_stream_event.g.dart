@@ -29,10 +29,8 @@ Map<String, dynamic> _$AwsKinesisDataStreamToJson(
 AwsKinesisDataStreamRecord _$AwsKinesisDataStreamRecordFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisDataStreamRecord(
-    kinesis: json['kinesis'] == null
-        ? null
-        : AwsKinesisDataStream.fromJson(
-            json['kinesis'] as Map<String, dynamic>),
+    kinesis:
+        AwsKinesisDataStream.fromJson(json['kinesis'] as Map<String, dynamic>),
     invokeIdentityArn: json['invokeIdentityArn'] as String,
     eventName: json['eventName'] as String,
     eventID: json['eventID'] as String,
@@ -59,11 +57,10 @@ Map<String, dynamic> _$AwsKinesisDataStreamRecordToJson(
 AwsKinesisDataStreamEvent _$AwsKinesisDataStreamEventFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisDataStreamEvent(
-    records: (json['Records'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AwsKinesisDataStreamRecord.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    records: (json['Records'] as List<dynamic>)
+        .map((e) =>
+            AwsKinesisDataStreamRecord.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

@@ -12,18 +12,14 @@ AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) {
     path: json['path'] as String,
     httpMethod: json['httpMethod'] as String,
     body: json['body'] as String,
-    headers: json['headers'] == null
-        ? null
-        : AwsApiGatewayEventHeaders.fromJson(
-            json['headers'] as Map<String, dynamic>),
+    headers: AwsApiGatewayEventHeaders.fromJson(
+        json['headers'] as Map<String, dynamic>),
     queryStringParameters:
-        json['queryStringParameters'] as Map<String, dynamic>,
-    stageVariables: json['stageVariables'] as Map<String, dynamic>,
-    requestContext: json['requestContext'] == null
-        ? null
-        : AwsApiGatewayEventRequestContext.fromJson(
-            json['requestContext'] as Map<String, dynamic>),
-    pathParameters: json['pathParameters'] as Map<String, dynamic>,
+        json['queryStringParameters'] as Map<String, dynamic>? ?? {},
+    stageVariables: json['stageVariables'] as Map<String, dynamic>? ?? {},
+    requestContext: AwsApiGatewayEventRequestContext.fromJson(
+        json['requestContext'] as Map<String, dynamic>),
+    pathParameters: json['pathParameters'] as Map<String, dynamic>? ?? {},
   );
 }
 
@@ -43,24 +39,28 @@ Map<String, dynamic> _$AwsApiGatewayEventToJson(AwsApiGatewayEvent instance) =>
 AwsApiGatewayEventHeaders _$AwsApiGatewayEventHeadersFromJson(
     Map<String, dynamic> json) {
   return AwsApiGatewayEventHeaders(
-    accept: json['Accept'] as String,
-    acceptEncoding: json['Accept-Encoding'] as String,
-    cloudfrontIsDesktopViewer: json['CloudFront-Is-Desktop-Viewer'] as String,
-    cloudfrontIsMobileViewer: json['CloudFront-Is-Mobile-Viewer'] as String,
-    cloudfrontIsSmartTvViewer: json['CloudFront-Is-SmartTV-Viewer'] as String,
-    cloudfrontForwardProto: json['CloudFront-Forwarded-Proto'] as String,
-    cloudfrontIsTabletViewer: json['CloudFront-Is-Tablet-Viewer'] as String,
-    cloudfrontViewerCountry: json['CloudFront-Viewer-Country'] as String,
-    upgradeInsecureRequests: json['Upgrade-Insecure-Requests'] as String,
-    cacheControl: json['Cache-Control'] as String,
-    host: json['Host'] as String,
-    via: json['Via'] as String,
-    userAgent: json['User-Agent'] as String,
-    xAmzCfId: json['X-Amz-Cf-Id'] as String,
-    xAmznTraceId: json['X-Amzn-Trace-Id'] as String,
-    xForwardedFor: json['X-Forwarded-For'] as String,
-    xForwardedPort: json['X-Forwarded-Port'] as String,
-    xForwardedProto: json['X-Forwarded-Proto'] as String,
+    accept: json['Accept'] as String? ?? '',
+    acceptEncoding: json['Accept-Encoding'] as String? ?? '',
+    cloudfrontIsDesktopViewer:
+        json['CloudFront-Is-Desktop-Viewer'] as String? ?? '',
+    cloudfrontIsMobileViewer:
+        json['CloudFront-Is-Mobile-Viewer'] as String? ?? '',
+    cloudfrontIsSmartTvViewer:
+        json['CloudFront-Is-SmartTV-Viewer'] as String? ?? '',
+    cloudfrontForwardProto: json['CloudFront-Forwarded-Proto'] as String? ?? '',
+    cloudfrontIsTabletViewer:
+        json['CloudFront-Is-Tablet-Viewer'] as String? ?? '',
+    cloudfrontViewerCountry: json['CloudFront-Viewer-Country'] as String? ?? '',
+    upgradeInsecureRequests: json['Upgrade-Insecure-Requests'] as String? ?? '',
+    cacheControl: json['Cache-Control'] as String? ?? '',
+    host: json['Host'] as String? ?? '',
+    via: json['Via'] as String? ?? '',
+    userAgent: json['User-Agent'] as String? ?? '',
+    xAmzCfId: json['X-Amz-Cf-Id'] as String? ?? '',
+    xAmznTraceId: json['X-Amzn-Trace-Id'] as String? ?? '',
+    xForwardedFor: json['X-Forwarded-For'] as String? ?? '',
+    xForwardedPort: json['X-Forwarded-Port'] as String? ?? '',
+    xForwardedProto: json['X-Forwarded-Proto'] as String? ?? '',
   );
 }
 
@@ -97,6 +97,10 @@ AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
     resourcePath: json['resourcePath'] as String,
     httpMethod: json['httpMethod'] as String,
     apiId: json['apiId'] as String,
+    identity: json['identity'] == null
+        ? null
+        : AwsApiGatewayEventRequestContextIdentity.fromJson(
+            json['identity'] as Map<String, dynamic>),
   );
 }
 
@@ -110,6 +114,7 @@ Map<String, dynamic> _$AwsApiGatewayEventRequestContextToJson(
       'resourcePath': instance.resourcePath,
       'httpMethod': instance.httpMethod,
       'apiId': instance.apiId,
+      'identity': instance.identity,
     };
 
 AwsApiGatewayEventRequestContextIdentity

@@ -60,6 +60,6 @@ abstract class Event {
 
   /// Creates a new event from a handler type with the [NextInvocation.response].
   static fromHandler<T>(Type type, Map<String, dynamic> json) {
-    return _registry[type](json);
+    return _registry[type]!(json);
   }
 }

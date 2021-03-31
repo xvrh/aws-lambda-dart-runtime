@@ -26,7 +26,7 @@ Map<String, dynamic> _$AwsDynamoDBUpdateRecordToJson(
 AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
     Map<String, dynamic> json) {
   return AwsDynamoDBUpdateEventRecord(
-    eventId: json['eventId'] as String,
+    eventId: json['eventID'] as String,
     eventName: json['eventName'] as String,
     eventSource: json['eventSource'] as String,
     eventVersion: json['eventVersion'] as String,
@@ -38,7 +38,7 @@ AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
 Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
         AwsDynamoDBUpdateEventRecord instance) =>
     <String, dynamic>{
-      'eventId': instance.eventId,
+      'eventID': instance.eventId,
       'eventName': instance.eventName,
       'eventSource': instance.eventSource,
       'eventVersion': instance.eventVersion,
@@ -49,11 +49,10 @@ Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
 AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(
     Map<String, dynamic> json) {
   return AwsDynamoDBUpdateEvent(
-    records: (json['Records'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AwsDynamoDBUpdateEventRecord.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    records: (json['Records'] as List<dynamic>)
+        .map((e) =>
+            AwsDynamoDBUpdateEventRecord.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

@@ -9,7 +9,7 @@ class AwsS3Event {
   @JsonKey(name: "Records")
   final List<AwsS3EventRecord> records;
 
-  const AwsS3Event({this.records});
+  const AwsS3Event({required this.records});
 
   factory AwsS3Event.fromJson(Map<String, dynamic> json) =>
       _$AwsS3EventFromJson(json);
@@ -31,15 +31,15 @@ class AwsS3EventRecord {
   final AwsS3Data s3;
 
   const AwsS3EventRecord(
-      {this.eventName,
-      this.eventSource,
-      this.awsRegion,
-      this.eventTime,
-      this.eventVersion,
-      this.userIdentity,
-      this.requestParameters,
-      this.responseElements,
-      this.s3});
+      {required this.eventName,
+      required this.eventSource,
+      required this.awsRegion,
+      required this.eventTime,
+      required this.eventVersion,
+      required this.userIdentity,
+      required this.requestParameters,
+      required this.responseElements,
+      required this.s3});
 
   factory AwsS3EventRecord.fromJson(Map<String, dynamic> json) =>
       _$AwsS3EventRecordFromJson(json);
@@ -55,7 +55,10 @@ class AwsS3Data {
   AWSS3EventObject object;
 
   AwsS3Data(
-      {this.s3SchemaVersion, this.configurationId, this.bucket, this.object});
+      {required this.s3SchemaVersion,
+      required this.configurationId,
+      required this.bucket,
+      required this.object});
 
   factory AwsS3Data.fromJson(Map<String, dynamic> json) =>
       _$AwsS3DataFromJson(json);
@@ -69,7 +72,8 @@ class AwsS3Bucket {
   AwsS3UserIdentity ownerIdentity;
   String arn;
 
-  AwsS3Bucket({this.name, this.ownerIdentity, this.arn});
+  AwsS3Bucket(
+      {required this.name, required this.ownerIdentity, required this.arn});
 
   factory AwsS3Bucket.fromJson(Map<String, dynamic> json) =>
       _$AwsS3BucketFromJson(json);
@@ -84,7 +88,11 @@ class AWSS3EventObject {
   String eTag;
   String sequencer;
 
-  AWSS3EventObject({this.key, this.size, this.eTag, this.sequencer});
+  AWSS3EventObject(
+      {required this.key,
+      required this.size,
+      required this.eTag,
+      required this.sequencer});
 
   factory AWSS3EventObject.fromJson(Map<String, dynamic> json) =>
       _$AWSS3EventObjectFromJson(json);
@@ -96,7 +104,7 @@ class AWSS3EventObject {
 class AwsS3UserIdentity {
   String principalId;
 
-  AwsS3UserIdentity({this.principalId});
+  AwsS3UserIdentity({required this.principalId});
 
   factory AwsS3UserIdentity.fromJson(Map<String, dynamic> json) =>
       _$AwsS3UserIdentityFromJson(json);

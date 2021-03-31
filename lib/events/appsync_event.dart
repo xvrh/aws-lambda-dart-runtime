@@ -19,5 +19,6 @@ class AwsAppSyncEvent {
 
   Map<String, dynamic> toJson() => _$AwsAppSyncEventToJson(this);
 
-  const AwsAppSyncEvent({this.version, this.operation, this.payload});
+  const AwsAppSyncEvent(
+      {required this.version, required this.operation, required this.payload});
 }

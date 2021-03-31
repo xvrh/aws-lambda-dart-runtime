@@ -44,13 +44,13 @@ class AwsALBEvent {
   Map<String, dynamic> toJson() => _$AwsALBEventToJson(this);
 
   const AwsALBEvent(
-      {this.context,
-      this.httpMethod,
-      this.path,
-      this.headers,
-      this.queryStringParameters,
-      this.body,
-      this.isBase64Encoded});
+      {required this.context,
+      required this.httpMethod,
+      required this.path,
+      required this.headers,
+      required this.queryStringParameters,
+      required this.body,
+      required this.isBase64Encoded});
 }
 
 /// Response for a request from an Application Load Balancer.
@@ -58,20 +58,20 @@ class AwsALBEvent {
 /// They should reflect the informationen needed here.
 class AwsALBResponse {
   /// The body of the HTTP Response send from the API Gateway to the client.
-  String body;
+  final String body;
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
-  bool isBase64Encoded;
+  final bool isBase64Encoded;
 
   /// HTTP status code of the response of the API Gateway to the client.
   /// The default status code is `200 OK`.
-  int statusCode;
+  final int statusCode;
 
   /// Description of the send HTTP status code.
-  String statusDescription;
+  final String statusDescription;
 
   /// The HTTP headers that should be send with the response to the client.
-  Map<String, String> headers;
+  final Map<String, String> headers;
 
   /// Returns the JSON representation of the response. This is called by
   /// the JSON encoder to produce the response.
@@ -84,11 +84,11 @@ class AwsALBResponse {
       };
 
   factory AwsALBResponse.fromString(
-    String body, {
-    bool isBase64Encoded,
-    int statusCode,
-    String statusDescription,
-    Map<String, String> headers,
+    String? body, {
+    bool? isBase64Encoded,
+    int? statusCode,
+    String? statusDescription,
+    Map<String, String>? headers,
   }) {
     return AwsALBResponse(
         body: body,
@@ -101,13 +101,12 @@ class AwsALBResponse {
   /// The Response that should be returned to the Application Load Balancer.
   /// It is constructed with some default values for the optional parameters.
   AwsALBResponse(
-      {body, headers, isBase64Encoded, statusCode, statusDescription}) {
-    this.body = body ?? '';
-    this.isBase64Encoded = isBase64Encoded ?? false;
-    this.headers = headers ?? {"Content-Type": "text/html; charset=utf-8"};
-    this.statusCode = statusCode ?? HttpStatus.ok;
-    this.statusDescription = statusDescription ?? "200 OK";
-  }
+      {body, headers, isBase64Encoded, statusCode, statusDescription})
+      : this.body = body ?? '',
+        this.isBase64Encoded = isBase64Encoded ?? false,
+        this.headers = headers ?? {"Content-Type": "text/html; charset=utf-8"},
+        this.statusCode = statusCode ?? HttpStatus.ok,
+        this.statusDescription = statusDescription ?? "200 OK";
 }
 
 /// AWS ALB Event Request Context ...

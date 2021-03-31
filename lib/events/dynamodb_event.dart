@@ -23,14 +23,15 @@ class AwsDynamoDBUpdateRecord {
 
   Map<String, dynamic> toJson() => _$AwsDynamoDBUpdateRecordToJson(this);
 
-  const AwsDynamoDBUpdateRecord({this.keys, this.oldImage, this.newImage});
+  const AwsDynamoDBUpdateRecord(
+      {required this.keys, required this.oldImage, required this.newImage});
 }
 
 /// DynamoDB Update Event Record ...
 @JsonSerializable()
 class AwsDynamoDBUpdateEventRecord {
   /// Event Id ...
-  @JsonKey()
+  @JsonKey(name: 'eventID')
   final String eventId;
 
   /// Event Name ...
@@ -59,12 +60,12 @@ class AwsDynamoDBUpdateEventRecord {
   Map<String, dynamic> toJson() => _$AwsDynamoDBUpdateEventRecordToJson(this);
 
   const AwsDynamoDBUpdateEventRecord(
-      {this.eventId,
-      this.eventName,
-      this.eventSource,
-      this.eventVersion,
-      this.awsRegion,
-      this.eventSourceARN});
+      {required this.eventId,
+      required this.eventName,
+      required this.eventSource,
+      required this.eventVersion,
+      required this.awsRegion,
+      required this.eventSourceARN});
 }
 
 /// DynamoDB Update Event ...
@@ -79,5 +80,5 @@ class AwsDynamoDBUpdateEvent {
 
   Map<String, dynamic> toJson() => _$AwsDynamoDBUpdateEventToJson(this);
 
-  const AwsDynamoDBUpdateEvent({this.records});
+  const AwsDynamoDBUpdateEvent({required this.records});
 }

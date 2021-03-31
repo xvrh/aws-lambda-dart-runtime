@@ -11,16 +11,16 @@ part 'apigateway_event.g.dart';
 /// Furthermore it indicates if the [body] is Base64 encoded or not.
 class AwsApiGatewayResponse {
   /// The body of the HTTP Response send from the API Gateway to the client.
-  String body;
+  final String body;
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
-  bool isBase64Encoded;
+  final bool isBase64Encoded;
 
   // HTTP Status Code of the response of the API Gateway to the client.
-  int statusCode;
+  final int statusCode;
 
   /// The HTTP headers that should be send with the response to the client.
-  Map<String, String> headers;
+  final Map<String, String> headers;
 
   /// Returns the JSON representation of the response. This is called by
   /// the JSON encoder to produce the response.
@@ -35,7 +35,7 @@ class AwsApiGatewayResponse {
   /// It optionally accepts the Base64 encoded flag and a HTTP Status Code
   /// for the response.
   factory AwsApiGatewayResponse.fromJson(Map<String, dynamic> body,
-      {bool isBase64Encoded, int statusCode, Map<String, String> headers}) {
+      {bool? isBase64Encoded, int? statusCode, Map<String, String>? headers}) {
     return AwsApiGatewayResponse(
         body: json.encode(body),
         isBase64Encoded: isBase64Encoded,
@@ -48,16 +48,14 @@ class AwsApiGatewayResponse {
   /// But also it signals if the [body] is Base64 encoded and what the HTTP Status Code
   /// of the response is.
   AwsApiGatewayResponse({
-    String body,
-    bool isBase64Encoded,
-    Map<String, String> headers,
-    int statusCode,
-  }) {
-    this.body = body ?? '';
-    this.isBase64Encoded = isBase64Encoded ?? false;
-    this.headers = headers ?? {"Content-Type": "application/json"};
-    this.statusCode = statusCode ?? HttpStatus.ok;
-  }
+    String? body,
+    bool? isBase64Encoded,
+    Map<String, String>? headers,
+    int? statusCode,
+  })  : this.body = body ?? '',
+        this.isBase64Encoded = isBase64Encoded ?? false,
+        this.headers = headers ?? {"Content-Type": "application/json"},
+        this.statusCode = statusCode ?? HttpStatus.ok;
 }
 
 /// API Gateway Event ...
@@ -84,15 +82,15 @@ class AwsApiGatewayEvent {
   final AwsApiGatewayEventHeaders headers;
 
   /// Path Parameters ...
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> pathParameters;
 
   /// Query String Parameters ...
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> queryStringParameters;
 
   /// Stage Variables ...
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> stageVariables;
 
   /// Request Context ...
@@ -104,76 +102,76 @@ class AwsApiGatewayEvent {
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventToJson(this);
 
   const AwsApiGatewayEvent(
-      {this.resource,
-      this.path,
-      this.httpMethod,
-      this.body,
-      this.headers,
-      this.queryStringParameters,
-      this.stageVariables,
-      this.requestContext,
-      this.pathParameters});
+      {required this.resource,
+      required this.path,
+      required this.httpMethod,
+      required this.body,
+      required this.headers,
+      required this.queryStringParameters,
+      required this.stageVariables,
+      required this.requestContext,
+      required this.pathParameters});
 }
 
 /// API Gateway Event Headers ...
 @JsonSerializable()
 class AwsApiGatewayEventHeaders {
-  @JsonKey(name: "Accept")
+  @JsonKey(name: "Accept", defaultValue: '')
   final String accept;
 
-  @JsonKey(name: "Accept-Encoding")
+  @JsonKey(name: "Accept-Encoding", defaultValue: '')
   final String acceptEncoding;
 
-  @JsonKey(name: "CloudFront-Forwarded-Proto")
+  @JsonKey(name: "CloudFront-Forwarded-Proto", defaultValue: '')
   final String cloudfrontForwardProto;
 
-  @JsonKey(name: "CloudFront-Is-Desktop-Viewer")
+  @JsonKey(name: "CloudFront-Is-Desktop-Viewer", defaultValue: '')
   final String cloudfrontIsDesktopViewer;
 
-  @JsonKey(name: "CloudFront-Is-Mobile-Viewer")
+  @JsonKey(name: "CloudFront-Is-Mobile-Viewer", defaultValue: '')
   final String cloudfrontIsMobileViewer;
 
-  @JsonKey(name: "CloudFront-Is-SmartTV-Viewer")
+  @JsonKey(name: "CloudFront-Is-SmartTV-Viewer", defaultValue: '')
   final String cloudfrontIsSmartTvViewer;
 
-  @JsonKey(name: "CloudFront-Is-Tablet-Viewer")
+  @JsonKey(name: "CloudFront-Is-Tablet-Viewer", defaultValue: '')
   final String cloudfrontIsTabletViewer;
 
-  @JsonKey(name: "CloudFront-Viewer-Country")
+  @JsonKey(name: "CloudFront-Viewer-Country", defaultValue: '')
   final String cloudfrontViewerCountry;
 
-  @JsonKey(name: "Host")
+  @JsonKey(name: "Host", defaultValue: '')
   final String host;
 
-  @JsonKey(name: "Upgrade-Insecure-Requests")
+  @JsonKey(name: "Upgrade-Insecure-Requests", defaultValue: '')
   final String upgradeInsecureRequests;
 
-  @JsonKey(name: "User-Agent")
+  @JsonKey(name: "User-Agent", defaultValue: '')
   final String userAgent;
 
-  @JsonKey(name: "Via")
+  @JsonKey(name: "Via", defaultValue: '')
   final String via;
 
-  @JsonKey(name: "X-Amz-Cf-Id")
+  @JsonKey(name: "X-Amz-Cf-Id", defaultValue: '')
   final String xAmzCfId;
 
-  @JsonKey(name: "X-Forwarded-For")
+  @JsonKey(name: "X-Forwarded-For", defaultValue: '')
   final String xForwardedFor;
 
-  @JsonKey(name: "X-Forwarded-Port")
+  @JsonKey(name: "X-Forwarded-Port", defaultValue: '')
   final String xForwardedPort;
 
-  @JsonKey(name: "X-Forwarded-Proto")
+  @JsonKey(name: "X-Forwarded-Proto", defaultValue: '')
   final String xForwardedProto;
 
-  @JsonKey(name: "Cache-Control")
+  @JsonKey(name: "Cache-Control", defaultValue: '')
   final String cacheControl;
 
-  @JsonKey(name: "X-Amzn-Trace-Id")
+  @JsonKey(name: "X-Amzn-Trace-Id", defaultValue: '')
   final String xAmznTraceId;
 
   @JsonKey(ignore: true)
-  Map<String, dynamic> raw;
+  Map<String, dynamic>? raw;
 
   factory AwsApiGatewayEventHeaders.fromJson(Map<String, dynamic> json) {
     final event = _$AwsApiGatewayEventHeadersFromJson(json);
@@ -185,24 +183,24 @@ class AwsApiGatewayEventHeaders {
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventHeadersToJson(this);
 
   AwsApiGatewayEventHeaders(
-      {this.accept,
-      this.acceptEncoding,
-      this.cloudfrontIsDesktopViewer,
-      this.cloudfrontIsMobileViewer,
-      this.cloudfrontIsSmartTvViewer,
-      this.cloudfrontForwardProto,
-      this.cloudfrontIsTabletViewer,
-      this.cloudfrontViewerCountry,
-      this.upgradeInsecureRequests,
-      this.cacheControl,
-      this.host,
-      this.via,
-      this.userAgent,
-      this.xAmzCfId,
-      this.xAmznTraceId,
-      this.xForwardedFor,
-      this.xForwardedPort,
-      this.xForwardedProto});
+      {required this.accept,
+      required this.acceptEncoding,
+      required this.cloudfrontIsDesktopViewer,
+      required this.cloudfrontIsMobileViewer,
+      required this.cloudfrontIsSmartTvViewer,
+      required this.cloudfrontForwardProto,
+      required this.cloudfrontIsTabletViewer,
+      required this.cloudfrontViewerCountry,
+      required this.upgradeInsecureRequests,
+      required this.cacheControl,
+      required this.host,
+      required this.via,
+      required this.userAgent,
+      required this.xAmzCfId,
+      required this.xAmznTraceId,
+      required this.xForwardedFor,
+      required this.xForwardedPort,
+      required this.xForwardedProto});
 }
 
 /// API Gateway Event Request Context ...
@@ -229,6 +227,9 @@ class AwsApiGatewayEventRequestContext {
   @JsonKey()
   final String apiId;
 
+  @JsonKey()
+  final AwsApiGatewayEventRequestContextIdentity? identity;
+
   factory AwsApiGatewayEventRequestContext.fromJson(
           Map<String, dynamic> json) =>
       _$AwsApiGatewayEventRequestContextFromJson(json);
@@ -237,13 +238,14 @@ class AwsApiGatewayEventRequestContext {
       _$AwsApiGatewayEventRequestContextToJson(this);
 
   const AwsApiGatewayEventRequestContext(
-      {this.accountId,
-      this.resourceId,
-      this.stage,
-      this.requestId,
-      this.resourcePath,
-      this.httpMethod,
-      this.apiId});
+      {required this.accountId,
+      required this.resourceId,
+      required this.stage,
+      required this.requestId,
+      required this.resourcePath,
+      required this.httpMethod,
+      required this.apiId,
+      required this.identity});
 }
 
 /// API Gateway Event Identity
@@ -290,15 +292,15 @@ class AwsApiGatewayEventRequestContextIdentity {
       _$AwsApiGatewayEventRequestContextIdentityToJson(this);
 
   const AwsApiGatewayEventRequestContextIdentity(
-      {this.cognitoIdentityPoolId,
-      this.cognitoAuthenticationProvider,
-      this.cognitoAuthenticationType,
-      this.caller,
-      this.accountId,
-      this.cognitoIdentityId,
-      this.apiKey,
-      this.sourceIp,
-      this.user,
-      this.userAgent,
-      this.userArn});
+      {required this.cognitoIdentityPoolId,
+      required this.cognitoAuthenticationProvider,
+      required this.cognitoAuthenticationType,
+      required this.caller,
+      required this.accountId,
+      required this.cognitoIdentityId,
+      required this.apiKey,
+      required this.sourceIp,
+      required this.user,
+      required this.userAgent,
+      required this.userArn});
 }

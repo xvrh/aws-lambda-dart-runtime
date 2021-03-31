@@ -24,9 +24,8 @@ Map<String, dynamic> _$AwsAlexaEventHeaderToJson(
 
 AwsAlexaEvent _$AwsAlexaEventFromJson(Map<String, dynamic> json) {
   return AwsAlexaEvent(
-    header: json['header'] == null
-        ? null
-        : AwsAlexaEventHeader.fromJson(json['header'] as Map<String, dynamic>),
+    header:
+        AwsAlexaEventHeader.fromJson(json['header'] as Map<String, dynamic>),
     payload: json['payload'] as Map<String, dynamic>,
   );
 }

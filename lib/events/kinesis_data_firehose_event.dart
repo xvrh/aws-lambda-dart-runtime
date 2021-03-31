@@ -24,7 +24,9 @@ class AwsKinesisFirehoseData {
   Map<String, dynamic> toJson() => _$AwsKinesisFirehoseDataToJson(this);
 
   const AwsKinesisFirehoseData(
-      {this.recordId, this.data, this.approximateArrivalTimestamp});
+      {required this.recordId,
+      required this.data,
+      required this.approximateArrivalTimestamp});
 }
 
 /// Kinesis Event ...
@@ -53,5 +55,8 @@ class AwsKinesisFirehoseDataEvent {
   Map<String, dynamic> toJson() => _$AwsKinesisFirehoseDataEventToJson(this);
 
   const AwsKinesisFirehoseDataEvent(
-      {this.records, this.invocationId, this.deliveryStreamArn, this.region});
+      {required this.records,
+      required this.invocationId,
+      required this.deliveryStreamArn,
+      required this.region});
 }

@@ -48,15 +48,15 @@ class AwsSQSEventRecord {
   Map<String, dynamic> toJson() => _$AwsSQSEventRecordToJson(this);
 
   const AwsSQSEventRecord(
-      {this.messageId,
-      this.body,
-      this.receiptHandle,
-      this.attributes,
-      this.messageAttributes,
-      this.md5OfBody,
-      this.eventSource,
-      this.eventSourceARN,
-      this.awsRegion});
+      {required this.messageId,
+      required this.body,
+      required this.receiptHandle,
+      required this.attributes,
+      required this.messageAttributes,
+      required this.md5OfBody,
+      required this.eventSource,
+      required this.eventSourceARN,
+      required this.awsRegion});
 }
 
 /// Event that is send via SQS to trigger for an innovation
@@ -73,5 +73,5 @@ class AwsSQSEvent {
 
   Map<String, dynamic> toJson() => _$AwsSQSEventToJson(this);
 
-  const AwsSQSEvent({this.records});
+  const AwsSQSEvent({required this.records});
 }

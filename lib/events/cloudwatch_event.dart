@@ -61,12 +61,12 @@ class AwsCloudwatchEvent {
   Map<String, dynamic> toJson() => _$AwsCloudwatchEventToJson(this);
 
   const AwsCloudwatchEvent(
-      {this.resources,
-      this.region,
-      this.id,
-      this.source,
-      this.account,
-      this.detailType,
-      this.detail,
-      this.time});
+      {required this.resources,
+      required this.region,
+      required this.id,
+      required this.source,
+      required this.account,
+      required this.detailType,
+      required this.detail,
+      required this.time});
 }

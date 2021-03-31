@@ -29,14 +29,14 @@ class AwsCognitoEvent {
   final AwsCognitoResponse response;
 
   const AwsCognitoEvent(
-      {this.version,
-      this.triggerSource,
-      this.region,
-      this.userPoolId,
-      this.userName,
-      this.callerContext,
-      this.request,
-      this.response});
+      {required this.version,
+      required this.triggerSource,
+      required this.region,
+      required this.userPoolId,
+      required this.userName,
+      required this.callerContext,
+      required this.request,
+      required this.response});
 
   factory AwsCognitoEvent.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoEventFromJson(json);
@@ -49,32 +49,32 @@ class AwsCognitoRequest {
   @JsonKey()
   final Map<String, dynamic> userAttributes;
 
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> validationData;
 
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> clientMetadata;
 
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool newDeviceUsed;
 
   @JsonKey()
-  final AwsGroupConfiguration groupConfiguration;
+  final AwsGroupConfiguration? groupConfiguration;
 
   @JsonKey()
-  final String password;
+  final String? password;
 
   @JsonKey()
   final String codeParameter;
 
   const AwsCognitoRequest(
-      {this.userAttributes,
-      this.validationData,
-      this.clientMetadata,
-      this.newDeviceUsed,
-      this.codeParameter,
-      this.password,
-      this.groupConfiguration});
+      {required this.userAttributes,
+      required this.validationData,
+      required this.clientMetadata,
+      required this.newDeviceUsed,
+      required this.codeParameter,
+      required this.password,
+      required this.groupConfiguration});
 
   factory AwsCognitoRequest.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoRequestFromJson(json);
@@ -84,55 +84,55 @@ class AwsCognitoRequest {
 
 @JsonSerializable()
 class AwsCognitoResponse {
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool autoConfirmUser;
 
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool autoVerifyPhone;
 
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool autoVerifyEmail;
 
   @JsonKey()
-  final AwsClaimOverrideDetails claimsOverrideDetails;
+  final AwsClaimOverrideDetails? claimsOverrideDetails;
 
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> userAttributes;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String finalUserStatus;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String messageAction;
 
-  @JsonKey()
+  @JsonKey(defaultValue: [])
   final List<String> desiredDeliveryMediums;
 
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool forceAliasCreation;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String smsMessage;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String emailMessage;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String emailSubject;
 
   const AwsCognitoResponse(
-      {this.autoConfirmUser,
-      this.autoVerifyEmail,
-      this.autoVerifyPhone,
-      this.claimsOverrideDetails,
-      this.userAttributes,
-      this.finalUserStatus,
-      this.desiredDeliveryMediums,
-      this.forceAliasCreation,
-      this.messageAction,
-      this.smsMessage,
-      this.emailMessage,
-      this.emailSubject});
+      {required this.autoConfirmUser,
+      required this.autoVerifyEmail,
+      required this.autoVerifyPhone,
+      required this.claimsOverrideDetails,
+      required this.userAttributes,
+      required this.finalUserStatus,
+      required this.desiredDeliveryMediums,
+      required this.forceAliasCreation,
+      required this.messageAction,
+      required this.smsMessage,
+      required this.emailMessage,
+      required this.emailSubject});
 
   factory AwsCognitoResponse.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoResponseFromJson(json);
@@ -155,10 +155,10 @@ class AwsGroupConfiguration {
   final Map<String, String> clientMetadata;
 
   const AwsGroupConfiguration(
-      {this.groupsToOverride,
-      this.iamRolesToOverride,
-      this.preferredRole,
-      this.clientMetadata});
+      {required this.groupsToOverride,
+      required this.iamRolesToOverride,
+      required this.preferredRole,
+      required this.clientMetadata});
 
   factory AwsGroupConfiguration.fromJson(Map<String, dynamic> json) =>
       _$AwsGroupConfigurationFromJson(json);
@@ -178,9 +178,9 @@ class AwsClaimOverrideDetails {
   final AwsGroupConfiguration groupOverrideDetails;
 
   const AwsClaimOverrideDetails(
-      {this.claimsToAddOrOverride,
-      this.claimsToSuppress,
-      this.groupOverrideDetails});
+      {required this.claimsToAddOrOverride,
+      required this.claimsToSuppress,
+      required this.groupOverrideDetails});
 
   factory AwsClaimOverrideDetails.fromJson(Map<String, dynamic> json) =>
       _$AwsClaimOverrideDetailsFromJson(json);
