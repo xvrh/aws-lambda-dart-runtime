@@ -12,7 +12,7 @@ part 'cloudwatch_log_event.g.dart';
 @JsonSerializable()
 class AwsCloudwatchLogEvent {
   /// awslogs ...
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> awslogs;
 
   factory AwsCloudwatchLogEvent.fromJson(Map<String, dynamic> json) =>

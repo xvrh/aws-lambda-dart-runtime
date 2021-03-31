@@ -66,7 +66,7 @@ class AwsApiGatewayEvent {
   final String path;
 
   /// Resource ...
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String resource;
 
   /// HTTP Method ...
@@ -74,7 +74,7 @@ class AwsApiGatewayEvent {
   final String httpMethod;
 
   /// Body ...
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String body;
 
   /// Headers ...
@@ -206,25 +206,25 @@ class AwsApiGatewayEventHeaders {
 /// API Gateway Event Request Context ...
 @JsonSerializable()
 class AwsApiGatewayEventRequestContext {
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String accountId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String resourceId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String stage;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String requestId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String resourcePath;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String httpMethod;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String apiId;
 
   @JsonKey()
@@ -251,37 +251,37 @@ class AwsApiGatewayEventRequestContext {
 /// API Gateway Event Identity
 @JsonSerializable()
 class AwsApiGatewayEventRequestContextIdentity {
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String cognitoIdentityPoolId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String accountId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String cognitoIdentityId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String caller;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String apiKey;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String sourceIp;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String cognitoAuthenticationType;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String cognitoAuthenticationProvider;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String userArn;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String userAgent;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String user;
 
   factory AwsApiGatewayEventRequestContextIdentity.fromJson(

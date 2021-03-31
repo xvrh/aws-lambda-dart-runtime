@@ -14,7 +14,7 @@ class AwsKinesisFirehoseData {
   final int approximateArrivalTimestamp;
 
   /// Data ...
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String data;
 
   factory AwsKinesisFirehoseData.fromJson(Map<String, dynamic> json) {

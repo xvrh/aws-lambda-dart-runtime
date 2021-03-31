@@ -10,7 +10,7 @@ AwsKinesisFirehoseData _$AwsKinesisFirehoseDataFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisFirehoseData(
     recordId: json['recordId'] as String,
-    data: json['data'] as String,
+    data: json['data'] as String? ?? '',
     approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int,
   );
 }

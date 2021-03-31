@@ -8,15 +8,15 @@ part 'dynamodb_event.g.dart';
 class AwsDynamoDBUpdateRecord {
   /// Keys ...
   @JsonKey(name: "Keys")
-  final Map<String, dynamic> keys;
+  final Map<String, dynamic>? keys;
 
   /// New Image ...
   @JsonKey(name: "NewImage")
-  final Map<String, dynamic> oldImage;
+  final Map<String, dynamic>? oldImage;
 
   /// Old Image ....
   @JsonKey(name: "OldImage")
-  final Map<String, dynamic> newImage;
+  final Map<String, dynamic>? newImage;
 
   factory AwsDynamoDBUpdateRecord.fromJson(Map<String, dynamic> json) =>
       _$AwsDynamoDBUpdateRecordFromJson(json);
@@ -54,6 +54,9 @@ class AwsDynamoDBUpdateEventRecord {
   @JsonKey()
   final String eventSourceARN;
 
+  @JsonKey()
+  final AwsDynamoDBUpdateRecord dynamodb;
+
   factory AwsDynamoDBUpdateEventRecord.fromJson(Map<String, dynamic> json) =>
       _$AwsDynamoDBUpdateEventRecordFromJson(json);
 
@@ -65,7 +68,8 @@ class AwsDynamoDBUpdateEventRecord {
       required this.eventSource,
       required this.eventVersion,
       required this.awsRegion,
-      required this.eventSourceARN});
+      required this.eventSourceARN,
+      required this.dynamodb});
 }
 
 /// DynamoDB Update Event ...

@@ -25,9 +25,14 @@ class AwsS3EventRecord {
   final String awsRegion;
   final DateTime eventTime;
   final String eventName;
-  final AwsS3UserIdentity userIdentity;
+  final AwsS3UserIdentity? userIdentity;
+
+  @JsonKey(defaultValue: {})
   final Map<String, String> requestParameters;
+
+  @JsonKey(defaultValue: {})
   final Map<String, String> responseElements;
+
   final AwsS3Data s3;
 
   const AwsS3EventRecord(
@@ -49,10 +54,15 @@ class AwsS3EventRecord {
 
 @JsonSerializable()
 class AwsS3Data {
-  String s3SchemaVersion;
-  String configurationId;
-  AwsS3Bucket bucket;
-  AWSS3EventObject object;
+  @JsonKey(defaultValue: '')
+  final String s3SchemaVersion;
+
+  @JsonKey(defaultValue: '')
+  final String configurationId;
+
+  final AwsS3Bucket bucket;
+
+  final AWSS3EventObject object;
 
   AwsS3Data(
       {required this.s3SchemaVersion,
@@ -68,9 +78,9 @@ class AwsS3Data {
 
 @JsonSerializable()
 class AwsS3Bucket {
-  String name;
-  AwsS3UserIdentity ownerIdentity;
-  String arn;
+  final String name;
+  final AwsS3UserIdentity ownerIdentity;
+  final String arn;
 
   AwsS3Bucket(
       {required this.name, required this.ownerIdentity, required this.arn});
@@ -83,10 +93,14 @@ class AwsS3Bucket {
 
 @JsonSerializable()
 class AWSS3EventObject {
-  String key;
-  int size;
-  String eTag;
-  String sequencer;
+  final String key;
+  final int size;
+
+  @JsonKey(defaultValue: '')
+  final String eTag;
+
+  @JsonKey(defaultValue: '')
+  final String sequencer;
 
   AWSS3EventObject(
       {required this.key,
@@ -102,7 +116,7 @@ class AWSS3EventObject {
 
 @JsonSerializable()
 class AwsS3UserIdentity {
-  String principalId;
+  final String principalId;
 
   AwsS3UserIdentity({required this.principalId});
 

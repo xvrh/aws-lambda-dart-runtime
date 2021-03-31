@@ -8,10 +8,10 @@ part of 'apigateway_event.dart';
 
 AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) {
   return AwsApiGatewayEvent(
-    resource: json['resource'] as String,
+    resource: json['resource'] as String? ?? '',
     path: json['path'] as String,
     httpMethod: json['httpMethod'] as String,
-    body: json['body'] as String,
+    body: json['body'] as String? ?? '',
     headers: AwsApiGatewayEventHeaders.fromJson(
         json['headers'] as Map<String, dynamic>),
     queryStringParameters:
@@ -90,13 +90,13 @@ Map<String, dynamic> _$AwsApiGatewayEventHeadersToJson(
 AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
     Map<String, dynamic> json) {
   return AwsApiGatewayEventRequestContext(
-    accountId: json['accountId'] as String,
-    resourceId: json['resourceId'] as String,
-    stage: json['stage'] as String,
-    requestId: json['requestId'] as String,
-    resourcePath: json['resourcePath'] as String,
-    httpMethod: json['httpMethod'] as String,
-    apiId: json['apiId'] as String,
+    accountId: json['accountId'] as String? ?? '',
+    resourceId: json['resourceId'] as String? ?? '',
+    stage: json['stage'] as String? ?? '',
+    requestId: json['requestId'] as String? ?? '',
+    resourcePath: json['resourcePath'] as String? ?? '',
+    httpMethod: json['httpMethod'] as String? ?? '',
+    apiId: json['apiId'] as String? ?? '',
     identity: json['identity'] == null
         ? null
         : AwsApiGatewayEventRequestContextIdentity.fromJson(
@@ -121,18 +121,19 @@ AwsApiGatewayEventRequestContextIdentity
     _$AwsApiGatewayEventRequestContextIdentityFromJson(
         Map<String, dynamic> json) {
   return AwsApiGatewayEventRequestContextIdentity(
-    cognitoIdentityPoolId: json['cognitoIdentityPoolId'] as String,
+    cognitoIdentityPoolId: json['cognitoIdentityPoolId'] as String? ?? '',
     cognitoAuthenticationProvider:
-        json['cognitoAuthenticationProvider'] as String,
-    cognitoAuthenticationType: json['cognitoAuthenticationType'] as String,
-    caller: json['caller'] as String,
-    accountId: json['accountId'] as String,
-    cognitoIdentityId: json['cognitoIdentityId'] as String,
-    apiKey: json['apiKey'] as String,
-    sourceIp: json['sourceIp'] as String,
-    user: json['user'] as String,
-    userAgent: json['userAgent'] as String,
-    userArn: json['userArn'] as String,
+        json['cognitoAuthenticationProvider'] as String? ?? '',
+    cognitoAuthenticationType:
+        json['cognitoAuthenticationType'] as String? ?? '',
+    caller: json['caller'] as String? ?? '',
+    accountId: json['accountId'] as String? ?? '',
+    cognitoIdentityId: json['cognitoIdentityId'] as String? ?? '',
+    apiKey: json['apiKey'] as String? ?? '',
+    sourceIp: json['sourceIp'] as String? ?? '',
+    user: json['user'] as String? ?? '',
+    userAgent: json['userAgent'] as String? ?? '',
+    userArn: json['userArn'] as String? ?? '',
   );
 }
 

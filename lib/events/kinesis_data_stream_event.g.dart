@@ -10,7 +10,7 @@ AwsKinesisDataStream _$AwsKinesisDataStreamFromJson(Map<String, dynamic> json) {
   return AwsKinesisDataStream(
     partitionKey: json['partitionKey'] as String,
     kinesisSchemaVersion: json['kinesisSchemaVersion'] as String,
-    data: json['data'] as String,
+    data: json['data'] as String? ?? '',
     sequenceNumber: json['sequenceNumber'] as String,
     approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int,
   );

@@ -11,9 +11,12 @@ AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) {
     version: json['version'] as int,
     triggerSource: json['triggerSource'] as String,
     region: json['region'] as String,
-    userPoolId: json['userPoolId'] as String,
-    userName: json['userName'] as String,
-    callerContext: Map<String, String>.from(json['callerContext'] as Map),
+    userPoolId: json['userPoolId'] as String? ?? '',
+    userName: json['userName'] as String? ?? '',
+    callerContext: (json['callerContext'] as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String),
+        ) ??
+        {},
     request:
         AwsCognitoRequest.fromJson(json['request'] as Map<String, dynamic>),
     response:
@@ -35,7 +38,7 @@ Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
 
 AwsCognitoRequest _$AwsCognitoRequestFromJson(Map<String, dynamic> json) {
   return AwsCognitoRequest(
-    userAttributes: json['userAttributes'] as Map<String, dynamic>,
+    userAttributes: json['userAttributes'] as Map<String, dynamic>? ?? {},
     validationData: (json['validationData'] as Map<String, dynamic>?)?.map(
           (k, e) => MapEntry(k, e as String),
         ) ??
@@ -110,14 +113,19 @@ Map<String, dynamic> _$AwsCognitoResponseToJson(AwsCognitoResponse instance) =>
 AwsGroupConfiguration _$AwsGroupConfigurationFromJson(
     Map<String, dynamic> json) {
   return AwsGroupConfiguration(
-    groupsToOverride: (json['groupsToOverride'] as List<dynamic>)
-        .map((e) => e as String)
-        .toList(),
-    iamRolesToOverride: (json['iamRolesToOverride'] as List<dynamic>)
-        .map((e) => e as String)
-        .toList(),
-    preferredRole: json['preferredRole'] as String,
-    clientMetadata: Map<String, String>.from(json['clientMetadata'] as Map),
+    groupsToOverride: (json['groupsToOverride'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList() ??
+        [],
+    iamRolesToOverride: (json['iamRolesToOverride'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList() ??
+        [],
+    preferredRole: json['preferredRole'] as String? ?? '',
+    clientMetadata: (json['clientMetadata'] as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String),
+        ) ??
+        {},
   );
 }
 
@@ -134,12 +142,18 @@ AwsClaimOverrideDetails _$AwsClaimOverrideDetailsFromJson(
     Map<String, dynamic> json) {
   return AwsClaimOverrideDetails(
     claimsToAddOrOverride:
-        Map<String, String>.from(json['claimsToAddOrOverride'] as Map),
-    claimsToSuppress: (json['claimsToSuppress'] as List<dynamic>)
-        .map((e) => e as String)
-        .toList(),
-    groupOverrideDetails: AwsGroupConfiguration.fromJson(
-        json['groupOverrideDetails'] as Map<String, dynamic>),
+        (json['claimsToAddOrOverride'] as Map<String, dynamic>?)?.map(
+              (k, e) => MapEntry(k, e as String),
+            ) ??
+            {},
+    claimsToSuppress: (json['claimsToSuppress'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList() ??
+        [],
+    groupOverrideDetails: json['groupOverrideDetails'] == null
+        ? null
+        : AwsGroupConfiguration.fromJson(
+            json['groupOverrideDetails'] as Map<String, dynamic>),
   );
 }
 

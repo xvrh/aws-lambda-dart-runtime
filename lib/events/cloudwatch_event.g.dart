@@ -13,9 +13,9 @@ AwsCloudwatchEvent _$AwsCloudwatchEventFromJson(Map<String, dynamic> json) {
     region: json['region'] as String,
     id: json['id'] as String,
     source: json['source'] as String,
-    account: json['account'] as String,
+    account: json['account'] as String? ?? '',
     detailType: json['detail-type'] as String,
-    detail: json['detail'] as Map<String, dynamic>,
+    detail: json['detail'] as Map<String, dynamic>? ?? {},
     time: DateTime.parse(json['time'] as String),
   );
 }

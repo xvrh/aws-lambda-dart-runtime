@@ -26,11 +26,19 @@ AwsS3EventRecord _$AwsS3EventRecordFromJson(Map<String, dynamic> json) {
     awsRegion: json['awsRegion'] as String,
     eventTime: DateTime.parse(json['eventTime'] as String),
     eventVersion: json['eventVersion'] as String,
-    userIdentity: AwsS3UserIdentity.fromJson(
-        json['userIdentity'] as Map<String, dynamic>),
+    userIdentity: json['userIdentity'] == null
+        ? null
+        : AwsS3UserIdentity.fromJson(
+            json['userIdentity'] as Map<String, dynamic>),
     requestParameters:
-        Map<String, String>.from(json['requestParameters'] as Map),
-    responseElements: Map<String, String>.from(json['responseElements'] as Map),
+        (json['requestParameters'] as Map<String, dynamic>?)?.map(
+              (k, e) => MapEntry(k, e as String),
+            ) ??
+            {},
+    responseElements: (json['responseElements'] as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String),
+        ) ??
+        {},
     s3: AwsS3Data.fromJson(json['s3'] as Map<String, dynamic>),
   );
 }
@@ -50,8 +58,8 @@ Map<String, dynamic> _$AwsS3EventRecordToJson(AwsS3EventRecord instance) =>
 
 AwsS3Data _$AwsS3DataFromJson(Map<String, dynamic> json) {
   return AwsS3Data(
-    s3SchemaVersion: json['s3SchemaVersion'] as String,
-    configurationId: json['configurationId'] as String,
+    s3SchemaVersion: json['s3SchemaVersion'] as String? ?? '',
+    configurationId: json['configurationId'] as String? ?? '',
     bucket: AwsS3Bucket.fromJson(json['bucket'] as Map<String, dynamic>),
     object: AWSS3EventObject.fromJson(json['object'] as Map<String, dynamic>),
   );
@@ -84,8 +92,8 @@ AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) {
   return AWSS3EventObject(
     key: json['key'] as String,
     size: json['size'] as int,
-    eTag: json['eTag'] as String,
-    sequencer: json['sequencer'] as String,
+    eTag: json['eTag'] as String? ?? '',
+    sequencer: json['sequencer'] as String? ?? '',
   );
 }
 

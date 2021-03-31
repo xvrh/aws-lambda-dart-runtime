@@ -9,9 +9,9 @@ part of 'dynamodb_event.dart';
 AwsDynamoDBUpdateRecord _$AwsDynamoDBUpdateRecordFromJson(
     Map<String, dynamic> json) {
   return AwsDynamoDBUpdateRecord(
-    keys: json['Keys'] as Map<String, dynamic>,
-    oldImage: json['NewImage'] as Map<String, dynamic>,
-    newImage: json['OldImage'] as Map<String, dynamic>,
+    keys: json['Keys'] as Map<String, dynamic>?,
+    oldImage: json['NewImage'] as Map<String, dynamic>?,
+    newImage: json['OldImage'] as Map<String, dynamic>?,
   );
 }
 
@@ -32,6 +32,8 @@ AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
     eventVersion: json['eventVersion'] as String,
     awsRegion: json['awsRegion'] as String,
     eventSourceARN: json['eventSourceARN'] as String,
+    dynamodb: AwsDynamoDBUpdateRecord.fromJson(
+        json['dynamodb'] as Map<String, dynamic>),
   );
 }
 
@@ -44,6 +46,7 @@ Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
       'eventVersion': instance.eventVersion,
       'awsRegion': instance.awsRegion,
       'eventSourceARN': instance.eventSourceARN,
+      'dynamodb': instance.dynamodb,
     };
 
 AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(

@@ -40,7 +40,7 @@ class AwsCloudwatchEvent {
   final String source;
 
   /// Account ...
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String account;
 
   /// Data Type ...
@@ -48,7 +48,7 @@ class AwsCloudwatchEvent {
   final String detailType;
 
   /// Detail ...
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> detail;
 
   /// Time ...

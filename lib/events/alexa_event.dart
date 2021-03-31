@@ -10,7 +10,7 @@ class AwsAlexaEventHeader {
   final String payloadVersion;
 
   /// Namespace of the event.
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String namespace;
 
   /// Name of the event
@@ -34,10 +34,10 @@ class AwsAlexaEventHeader {
 class AwsAlexaEvent {
   /// Meta information about the event.
   @JsonKey()
-  final AwsAlexaEventHeader header;
+  final AwsAlexaEventHeader? header;
 
   /// Payload of the event send by Alexa.
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> payload;
 
   factory AwsAlexaEvent.fromJson(Map<String, dynamic> json) =>

@@ -13,13 +13,13 @@ class AwsCognitoEvent {
   @JsonKey()
   final String region;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String userPoolId;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String userName;
 
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> callerContext;
 
   @JsonKey()
@@ -46,7 +46,7 @@ class AwsCognitoEvent {
 
 @JsonSerializable()
 class AwsCognitoRequest {
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> userAttributes;
 
   @JsonKey(defaultValue: {})
@@ -142,16 +142,16 @@ class AwsCognitoResponse {
 
 @JsonSerializable()
 class AwsGroupConfiguration {
-  @JsonKey()
+  @JsonKey(defaultValue: [])
   final List<String> groupsToOverride;
 
-  @JsonKey()
+  @JsonKey(defaultValue: [])
   final List<String> iamRolesToOverride;
 
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String preferredRole;
 
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> clientMetadata;
 
   const AwsGroupConfiguration(
@@ -168,14 +168,14 @@ class AwsGroupConfiguration {
 
 @JsonSerializable()
 class AwsClaimOverrideDetails {
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, String> claimsToAddOrOverride;
 
-  @JsonKey()
+  @JsonKey(defaultValue: [])
   final List<String> claimsToSuppress;
 
   @JsonKey()
-  final AwsGroupConfiguration groupOverrideDetails;
+  final AwsGroupConfiguration? groupOverrideDetails;
 
   const AwsClaimOverrideDetails(
       {required this.claimsToAddOrOverride,

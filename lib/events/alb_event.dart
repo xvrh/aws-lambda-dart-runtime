@@ -14,28 +14,28 @@ class AwsALBEvent {
   final AwsALBEventContext context;
 
   /// HTTP method that is used to trigger the invocation of the Lambda.
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String httpMethod;
 
   /// The URI that is accessed to trigger the invocation of the Lambda.
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String path;
 
   /// HTTP headers that are send with the request to the load balancer.
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> headers;
 
   /// The query parameters for the request to the load balancer.
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> queryStringParameters;
 
   /// Body of the request. This can be data that is send with the POST
   /// to the request.
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String body;
 
   /// Singals that the request is Base64 encoded.
-  @JsonKey()
+  @JsonKey(defaultValue: false)
   final bool isBase64Encoded;
 
   factory AwsALBEvent.fromJson(Map<String, dynamic> json) =>

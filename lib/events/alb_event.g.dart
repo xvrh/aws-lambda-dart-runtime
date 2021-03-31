@@ -10,13 +10,13 @@ AwsALBEvent _$AwsALBEventFromJson(Map<String, dynamic> json) {
   return AwsALBEvent(
     context:
         AwsALBEventContext.fromJson(json['context'] as Map<String, dynamic>),
-    httpMethod: json['httpMethod'] as String,
-    path: json['path'] as String,
-    headers: json['headers'] as Map<String, dynamic>,
+    httpMethod: json['httpMethod'] as String? ?? '',
+    path: json['path'] as String? ?? '',
+    headers: json['headers'] as Map<String, dynamic>? ?? {},
     queryStringParameters:
-        json['queryStringParameters'] as Map<String, dynamic>,
-    body: json['body'] as String,
-    isBase64Encoded: json['isBase64Encoded'] as bool,
+        json['queryStringParameters'] as Map<String, dynamic>? ?? {},
+    body: json['body'] as String? ?? '',
+    isBase64Encoded: json['isBase64Encoded'] as bool? ?? false,
   );
 }
 

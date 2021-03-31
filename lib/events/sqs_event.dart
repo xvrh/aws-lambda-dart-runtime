@@ -18,11 +18,11 @@ class AwsSQSEventRecord {
   final String body;
 
   /// Attributes that are send with the event.
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> attributes;
 
   /// Message attributes that are send with the event.
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Map<String, dynamic> messageAttributes;
 
   /// The md5 hash of the message body.

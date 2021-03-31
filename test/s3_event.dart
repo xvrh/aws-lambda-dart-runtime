@@ -20,7 +20,7 @@ void main() {
       expect(event.records[0].eventTime,
           equals(DateTime.parse("1970-01-01T00:00:00.000Z")));
       expect(event.records[0].eventName, equals("ObjectCreated:Put"));
-      expect(event.records[0].userIdentity.principalId, equals("EXAMPLE"));
+      expect(event.records[0].userIdentity!.principalId, equals("EXAMPLE"));
       expect(event.records[0].requestParameters["sourceIPAddress"],
           equals("127.0.0.1"));
       expect(event.records[0].s3.s3SchemaVersion, equals("1.0"));

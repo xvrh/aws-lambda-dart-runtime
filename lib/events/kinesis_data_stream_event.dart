@@ -14,7 +14,7 @@ class AwsKinesisDataStream {
   final String kinesisSchemaVersion;
 
   /// Data ...
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String data;
 
   /// Sequenzer Number ...
