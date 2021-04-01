@@ -171,10 +171,10 @@ class AwsApiGatewayEventHeaders {
   final String xAmznTraceId;
 
   @JsonKey(ignore: true)
-  Map<String, dynamic> _raw = {};
-  Map<String, dynamic> get raw => _raw;
+  Map<String, String> _raw = {};
+  Map<String, String> get raw => _raw;
 
-  factory AwsApiGatewayEventHeaders.fromJson(Map<String, dynamic> json) {
+  factory AwsApiGatewayEventHeaders.fromJson(Map<String, String> json) {
     final event = _$AwsApiGatewayEventHeadersFromJson(json).._raw = json;
 
     return event;

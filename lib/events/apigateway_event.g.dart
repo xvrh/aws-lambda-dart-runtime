@@ -13,7 +13,7 @@ AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) {
     httpMethod: json['httpMethod'] as String,
     body: json['body'] as String? ?? '',
     headers: AwsApiGatewayEventHeaders.fromJson(
-        json['headers'] as Map<String, dynamic>),
+        Map<String, String>.from(json['headers'] as Map)),
     queryStringParameters:
         json['queryStringParameters'] as Map<String, dynamic>? ?? {},
     stageVariables: json['stageVariables'] as Map<String, dynamic>? ?? {},
