@@ -171,36 +171,37 @@ class AwsApiGatewayEventHeaders {
   final String xAmznTraceId;
 
   @JsonKey(ignore: true)
-  Map<String, dynamic>? raw;
+  Map<String, dynamic> _raw = {};
+  Map<String, dynamic> get raw => _raw;
 
   factory AwsApiGatewayEventHeaders.fromJson(Map<String, dynamic> json) {
-    final event = _$AwsApiGatewayEventHeadersFromJson(json);
-    event.raw = json;
+    final event = _$AwsApiGatewayEventHeadersFromJson(json).._raw = json;
 
     return event;
   }
 
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventHeadersToJson(this);
 
-  AwsApiGatewayEventHeaders(
-      {required this.accept,
-      required this.acceptEncoding,
-      required this.cloudfrontIsDesktopViewer,
-      required this.cloudfrontIsMobileViewer,
-      required this.cloudfrontIsSmartTvViewer,
-      required this.cloudfrontForwardProto,
-      required this.cloudfrontIsTabletViewer,
-      required this.cloudfrontViewerCountry,
-      required this.upgradeInsecureRequests,
-      required this.cacheControl,
-      required this.host,
-      required this.via,
-      required this.userAgent,
-      required this.xAmzCfId,
-      required this.xAmznTraceId,
-      required this.xForwardedFor,
-      required this.xForwardedPort,
-      required this.xForwardedProto});
+  AwsApiGatewayEventHeaders({
+    required this.accept,
+    required this.acceptEncoding,
+    required this.cloudfrontIsDesktopViewer,
+    required this.cloudfrontIsMobileViewer,
+    required this.cloudfrontIsSmartTvViewer,
+    required this.cloudfrontForwardProto,
+    required this.cloudfrontIsTabletViewer,
+    required this.cloudfrontViewerCountry,
+    required this.upgradeInsecureRequests,
+    required this.cacheControl,
+    required this.host,
+    required this.via,
+    required this.userAgent,
+    required this.xAmzCfId,
+    required this.xAmznTraceId,
+    required this.xForwardedFor,
+    required this.xForwardedPort,
+    required this.xForwardedProto,
+  });
 }
 
 /// API Gateway Event Request Context ...
