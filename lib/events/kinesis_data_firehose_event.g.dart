@@ -9,9 +9,9 @@ part of 'kinesis_data_firehose_event.dart';
 AwsKinesisFirehoseData _$AwsKinesisFirehoseDataFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisFirehoseData(
-    recordId: json['recordId'] as String,
-    data: json['data'] as String,
-    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int,
+    recordId: json['recordId'] as String?,
+    data: json['data'] as String?,
+    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int?,
   );
 }
 
@@ -26,12 +26,12 @@ Map<String, dynamic> _$AwsKinesisFirehoseDataToJson(
 AwsKinesisFirehoseDataEvent _$AwsKinesisFirehoseDataEventFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisFirehoseDataEvent(
-    records: (json['records'] as List<dynamic>)
-        .map((e) => AwsKinesisFirehoseData.fromJson(e as Map<String, dynamic>))
+    records: (json['records'] as List<dynamic>?)
+        ?.map((e) => AwsKinesisFirehoseData.fromJson(e as Map<String, dynamic>))
         .toList(),
-    invocationId: json['invocationId'] as String,
-    deliveryStreamArn: json['deliveryStreamArn'] as String,
-    region: json['region'] as String,
+    invocationId: json['invocationId'] as String?,
+    deliveryStreamArn: json['deliveryStreamArn'] as String?,
+    region: json['region'] as String?,
   );
 }
 

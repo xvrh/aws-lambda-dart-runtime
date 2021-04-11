@@ -8,11 +8,11 @@ part of 'kinesis_data_stream_event.dart';
 
 AwsKinesisDataStream _$AwsKinesisDataStreamFromJson(Map<String, dynamic> json) {
   return AwsKinesisDataStream(
-    partitionKey: json['partitionKey'] as String,
-    kinesisSchemaVersion: json['kinesisSchemaVersion'] as String,
-    data: json['data'] as String,
-    sequenceNumber: json['sequenceNumber'] as String,
-    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int,
+    partitionKey: json['partitionKey'] as String?,
+    kinesisSchemaVersion: json['kinesisSchemaVersion'] as String?,
+    data: json['data'] as String?,
+    sequenceNumber: json['sequenceNumber'] as String?,
+    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int?,
   );
 }
 
@@ -29,15 +29,17 @@ Map<String, dynamic> _$AwsKinesisDataStreamToJson(
 AwsKinesisDataStreamRecord _$AwsKinesisDataStreamRecordFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisDataStreamRecord(
-    kinesis:
-        AwsKinesisDataStream.fromJson(json['kinesis'] as Map<String, dynamic>),
-    invokeIdentityArn: json['invokeIdentityArn'] as String,
-    eventName: json['eventName'] as String,
-    eventID: json['eventID'] as String,
-    eventSource: json['eventSource'] as String,
-    eventVersion: json['eventVersion'] as String,
-    eventSourceARN: json['eventSourceARN'] as String,
-    awsRegion: json['awsRegion'] as String,
+    kinesis: json['kinesis'] == null
+        ? null
+        : AwsKinesisDataStream.fromJson(
+            json['kinesis'] as Map<String, dynamic>),
+    invokeIdentityArn: json['invokeIdentityArn'] as String?,
+    eventName: json['eventName'] as String?,
+    eventID: json['eventID'] as String?,
+    eventSource: json['eventSource'] as String?,
+    eventVersion: json['eventVersion'] as String?,
+    eventSourceARN: json['eventSourceARN'] as String?,
+    awsRegion: json['awsRegion'] as String?,
   );
 }
 
@@ -57,8 +59,8 @@ Map<String, dynamic> _$AwsKinesisDataStreamRecordToJson(
 AwsKinesisDataStreamEvent _$AwsKinesisDataStreamEventFromJson(
     Map<String, dynamic> json) {
   return AwsKinesisDataStreamEvent(
-    records: (json['Records'] as List<dynamic>)
-        .map((e) =>
+    records: (json['Records'] as List<dynamic>?)
+        ?.map((e) =>
             AwsKinesisDataStreamRecord.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
