@@ -1,12 +1,12 @@
 name: aws_lambda_dart_runtime
-version: 1.0.3+2
+version: 1.0.4
 description: |-
   A powerful runtime to build Lambda functions in Dart with native AWS events.
 homepage: https://github.com/awslabs/aws-lambda-dart-runtime
 documentation: https://awslabs.github.io/aws-lambda-dart-runtime/
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   json_annotation: ^4.0.1
