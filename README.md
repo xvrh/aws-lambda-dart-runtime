@@ -44,7 +44,7 @@ Add the following snippet to your [pubspec file](https://dart.dev/tools/pub/pubs
 
 ```yaml
 dependencies:
-  aws_lambda_dart_runtime: ^1.0.3+2
+  aws_lambda_dart_runtime: ^1.1.0
 ```
 
 [Docs](https://awslabs.github.io/aws-lambda-dart-runtime/) are available. They are also accessible in the [`docs`](https://github.com/awslabs/aws-lambda-dart-runtime/blob/docs) folder.
