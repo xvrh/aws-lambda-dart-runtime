@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Adding [null-safety](https://dart.dev/null-safety)
+  
 ## 1.0.3+2
 
 - #14 Adding type signatured to API Gateway response

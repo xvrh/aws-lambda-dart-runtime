@@ -1,6 +1,6 @@
 # Dart Runtime for AWS Lambda
 
-![Main](https://github.com/awslabs/aws-lambda-dart-runtime/workflows/Main/badge.svg?branch=master)
+![Main](https://github.com/katallaxie/aws-lambda-dart-runtime/workflows/Main/badge.svg?branch=main)
 [![License Apache 2](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 <p align="center">
