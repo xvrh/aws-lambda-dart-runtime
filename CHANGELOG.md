@@ -1,4 +1,4 @@
-## 1.0.4
+## 1.1.0
 
 - Adding [null-safety](https://dart.dev/null-safety)
   
