@@ -1,12 +1,16 @@
 import 'dart:io';
 
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'alb_event.g.dart';
 
 /// Event send by an Application Load Balancer to the
 /// invocation to the Lambda.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsALBEvent {
   /// Request context in which this request is executed.
   /// For the ELB this is the ARN of the target group.
@@ -35,7 +39,7 @@ class AwsALBEvent {
   final String body;
 
   /// Singals that the request is Base64 encoded.
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool isBase64Encoded;
 
   factory AwsALBEvent.fromJson(Map<String, dynamic> json) =>
@@ -111,6 +115,9 @@ class AwsALBResponse {
 
 /// AWS ALB Event Request Context ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsALBEventContext {
   factory AwsALBEventContext.fromJson(Map<String, dynamic> json) =>
       _$AwsALBEventContextFromJson(json);

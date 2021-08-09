@@ -1,9 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'appsync_event.g.dart';
 
 /// App Sync Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsAppSyncEvent {
   @JsonKey(defaultValue: '')
   final String version;

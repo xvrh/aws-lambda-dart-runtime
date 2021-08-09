@@ -1,8 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'cognito_event.g.dart';
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoEvent {
   @JsonKey()
   final int version;
@@ -45,6 +49,9 @@ class AwsCognitoEvent {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoRequest {
   @JsonKey(defaultValue: {})
   final Map<String, dynamic> userAttributes;
@@ -55,7 +62,7 @@ class AwsCognitoRequest {
   @JsonKey(defaultValue: {})
   final Map<String, String> clientMetadata;
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool newDeviceUsed;
 
   @JsonKey()
@@ -83,14 +90,17 @@ class AwsCognitoRequest {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoResponse {
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool autoConfirmUser;
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool autoVerifyPhone;
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool autoVerifyEmail;
 
   @JsonKey()
@@ -108,7 +118,7 @@ class AwsCognitoResponse {
   @JsonKey(defaultValue: [])
   final List<String> desiredDeliveryMediums;
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   final bool forceAliasCreation;
 
   @JsonKey(defaultValue: '')
@@ -141,6 +151,9 @@ class AwsCognitoResponse {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsGroupConfiguration {
   @JsonKey(defaultValue: [])
   final List<String> groupsToOverride;
@@ -167,6 +180,9 @@ class AwsGroupConfiguration {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsClaimOverrideDetails {
   @JsonKey(defaultValue: {})
   final Map<String, String> claimsToAddOrOverride;

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'apigateway_event.g.dart';
 
@@ -60,6 +61,9 @@ class AwsApiGatewayResponse {
 
 /// API Gateway Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEvent {
   /// URL Path ...
   @JsonKey()
@@ -115,6 +119,9 @@ class AwsApiGatewayEvent {
 
 /// API Gateway Event Headers ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventHeaders {
   @JsonKey(name: "Accept", defaultValue: '')
   final String accept;
@@ -206,6 +213,9 @@ class AwsApiGatewayEventHeaders {
 
 /// API Gateway Event Request Context ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventRequestContext {
   @JsonKey(defaultValue: '')
   final String accountId;
@@ -251,6 +261,9 @@ class AwsApiGatewayEventRequestContext {
 
 /// API Gateway Event Identity
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventRequestContextIdentity {
   @JsonKey(defaultValue: '')
   final String cognitoIdentityPoolId;

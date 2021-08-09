@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'cloudwatch_event.g.dart';
 
@@ -22,6 +23,9 @@ part 'cloudwatch_event.g.dart';
 /// }
 /// ```
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCloudwatchEvent {
   /// Resources ...
   @JsonKey()

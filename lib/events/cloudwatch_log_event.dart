@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'cloudwatch_log_event.g.dart';
 
@@ -10,6 +11,9 @@ part 'cloudwatch_log_event.g.dart';
 
 /// Cloudwatch Log Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCloudwatchLogEvent {
   /// awslogs ...
   @JsonKey(defaultValue: {})

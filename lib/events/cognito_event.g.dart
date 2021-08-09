@@ -8,7 +8,7 @@ part of 'cognito_event.dart';
 
 AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) {
   return AwsCognitoEvent(
-    version: json['version'] as int,
+    version: const PermissiveIntConverter().fromJson(json['version']),
     triggerSource: json['triggerSource'] as String,
     region: json['region'] as String,
     userPoolId: json['userPoolId'] as String? ?? '',
@@ -26,7 +26,7 @@ AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
     <String, dynamic>{
-      'version': instance.version,
+      'version': const PermissiveIntConverter().toJson(instance.version),
       'triggerSource': instance.triggerSource,
       'region': instance.region,
       'userPoolId': instance.userPoolId,
@@ -47,7 +47,8 @@ AwsCognitoRequest _$AwsCognitoRequestFromJson(Map<String, dynamic> json) {
           (k, e) => MapEntry(k, e as String),
         ) ??
         {},
-    newDeviceUsed: json['newDeviceUsed'] as bool? ?? false,
+    newDeviceUsed:
+        const PermissiveBoolConverter().fromJson(json['newDeviceUsed']),
     codeParameter: json['codeParameter'] as String,
     password: json['password'] as String?,
     groupConfiguration: json['groupConfiguration'] == null
@@ -62,7 +63,8 @@ Map<String, dynamic> _$AwsCognitoRequestToJson(AwsCognitoRequest instance) =>
       'userAttributes': instance.userAttributes,
       'validationData': instance.validationData,
       'clientMetadata': instance.clientMetadata,
-      'newDeviceUsed': instance.newDeviceUsed,
+      'newDeviceUsed':
+          const PermissiveBoolConverter().toJson(instance.newDeviceUsed),
       'groupConfiguration': instance.groupConfiguration,
       'password': instance.password,
       'codeParameter': instance.codeParameter,
@@ -70,9 +72,12 @@ Map<String, dynamic> _$AwsCognitoRequestToJson(AwsCognitoRequest instance) =>
 
 AwsCognitoResponse _$AwsCognitoResponseFromJson(Map<String, dynamic> json) {
   return AwsCognitoResponse(
-    autoConfirmUser: json['autoConfirmUser'] as bool? ?? false,
-    autoVerifyEmail: json['autoVerifyEmail'] as bool? ?? false,
-    autoVerifyPhone: json['autoVerifyPhone'] as bool? ?? false,
+    autoConfirmUser:
+        const PermissiveBoolConverter().fromJson(json['autoConfirmUser']),
+    autoVerifyEmail:
+        const PermissiveBoolConverter().fromJson(json['autoVerifyEmail']),
+    autoVerifyPhone:
+        const PermissiveBoolConverter().fromJson(json['autoVerifyPhone']),
     claimsOverrideDetails: json['claimsOverrideDetails'] == null
         ? null
         : AwsClaimOverrideDetails.fromJson(
@@ -86,7 +91,8 @@ AwsCognitoResponse _$AwsCognitoResponseFromJson(Map<String, dynamic> json) {
             ?.map((e) => e as String)
             .toList() ??
         [],
-    forceAliasCreation: json['forceAliasCreation'] as bool? ?? false,
+    forceAliasCreation:
+        const PermissiveBoolConverter().fromJson(json['forceAliasCreation']),
     messageAction: json['messageAction'] as String? ?? '',
     smsMessage: json['smsMessage'] as String? ?? '',
     emailMessage: json['emailMessage'] as String? ?? '',
@@ -96,15 +102,19 @@ AwsCognitoResponse _$AwsCognitoResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AwsCognitoResponseToJson(AwsCognitoResponse instance) =>
     <String, dynamic>{
-      'autoConfirmUser': instance.autoConfirmUser,
-      'autoVerifyPhone': instance.autoVerifyPhone,
-      'autoVerifyEmail': instance.autoVerifyEmail,
+      'autoConfirmUser':
+          const PermissiveBoolConverter().toJson(instance.autoConfirmUser),
+      'autoVerifyPhone':
+          const PermissiveBoolConverter().toJson(instance.autoVerifyPhone),
+      'autoVerifyEmail':
+          const PermissiveBoolConverter().toJson(instance.autoVerifyEmail),
       'claimsOverrideDetails': instance.claimsOverrideDetails,
       'userAttributes': instance.userAttributes,
       'finalUserStatus': instance.finalUserStatus,
       'messageAction': instance.messageAction,
       'desiredDeliveryMediums': instance.desiredDeliveryMediums,
-      'forceAliasCreation': instance.forceAliasCreation,
+      'forceAliasCreation':
+          const PermissiveBoolConverter().toJson(instance.forceAliasCreation),
       'smsMessage': instance.smsMessage,
       'emailMessage': instance.emailMessage,
       'emailSubject': instance.emailSubject,

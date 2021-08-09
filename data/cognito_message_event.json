@@ -1,0 +1,27 @@
+{
+  "version": "1",
+  "region": "eu-central-1",
+  "userPoolId": "eu-central-000000000",
+  "userName": "0000be45-0000-0000-0000-00004ab60000",
+  "callerContext": {
+    "awsSdkVersion": "aws-sdk-unknown-unknown",
+    "clientId": "CLIENT_ID_NOT_APPLICABLE"
+  },
+  "triggerSource": "CustomMessage_AdminCreateUser",
+  "request": {
+    "userAttributes": {
+      "sub": "0000be45-0000-0000-0000-00004ab60000",
+      "email_verified": "true",
+      "cognito:user_status": "FORCE_CHANGE_PASSWORD",
+      "email": "email@gmail.com"
+    },
+    "codeParameter": "{####}",
+    "linkParameter": "{##Click Here##}",
+    "usernameParameter": "{username}"
+  },
+  "response": {
+    "smsMessage": null,
+    "emailMessage": null,
+    "emailSubject": null
+  }
+}

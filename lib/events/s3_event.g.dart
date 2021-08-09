@@ -91,7 +91,7 @@ Map<String, dynamic> _$AwsS3BucketToJson(AwsS3Bucket instance) =>
 AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) {
   return AWSS3EventObject(
     key: json['key'] as String,
-    size: json['size'] as int,
+    size: const PermissiveIntConverter().fromJson(json['size']),
     eTag: json['eTag'] as String? ?? '',
     sequencer: json['sequencer'] as String? ?? '',
   );
@@ -100,7 +100,7 @@ AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AWSS3EventObjectToJson(AWSS3EventObject instance) =>
     <String, dynamic>{
       'key': instance.key,
-      'size': instance.size,
+      'size': const PermissiveIntConverter().toJson(instance.size),
       'eTag': instance.eTag,
       'sequencer': instance.sequencer,
     };

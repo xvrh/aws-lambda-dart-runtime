@@ -11,7 +11,8 @@ AwsKinesisFirehoseData _$AwsKinesisFirehoseDataFromJson(
   return AwsKinesisFirehoseData(
     recordId: json['recordId'] as String,
     data: json['data'] as String? ?? '',
-    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int,
+    approximateArrivalTimestamp: const PermissiveIntConverter()
+        .fromJson(json['approximateArrivalTimestamp']),
   );
 }
 
@@ -19,7 +20,8 @@ Map<String, dynamic> _$AwsKinesisFirehoseDataToJson(
         AwsKinesisFirehoseData instance) =>
     <String, dynamic>{
       'recordId': instance.recordId,
-      'approximateArrivalTimestamp': instance.approximateArrivalTimestamp,
+      'approximateArrivalTimestamp': const PermissiveIntConverter()
+          .toJson(instance.approximateArrivalTimestamp),
       'data': instance.data,
     };
 

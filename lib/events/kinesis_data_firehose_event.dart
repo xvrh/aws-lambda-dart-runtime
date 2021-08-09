@@ -1,9 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'kinesis_data_firehose_event.g.dart';
 
 /// Kinesis .....
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsKinesisFirehoseData {
   /// Record ID ...
   @JsonKey()
@@ -31,6 +35,9 @@ class AwsKinesisFirehoseData {
 
 /// Kinesis Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsKinesisFirehoseDataEvent {
   /// Invocation ID ...
   @JsonKey()
