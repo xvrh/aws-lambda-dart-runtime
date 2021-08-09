@@ -1,5 +1,6 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'cloudwatch_log_event.g.dart';
 
@@ -11,6 +12,9 @@ part 'cloudwatch_log_event.g.dart';
 
 /// Cloudwatch Log Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCloudwatchLogEvent extends Event {
   /// awslogs ...
   @JsonKey()

@@ -1,11 +1,15 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'dynamodb_event.g.dart';
 
 /// Event send by a DynamoDB stream that contains
 /// the updated records in the DynamoDB table.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsDynamoDBUpdateRecord extends Event {
   /// Keys ...
   @JsonKey(name: 'Keys')
@@ -29,6 +33,9 @@ class AwsDynamoDBUpdateRecord extends Event {
 
 /// DynamoDB Update Event Record ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsDynamoDBUpdateEventRecord {
   /// Event Id ...
   @JsonKey()
@@ -70,6 +77,9 @@ class AwsDynamoDBUpdateEventRecord {
 
 /// DynamoDB Update Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsDynamoDBUpdateEvent extends Event {
   /// awslogs ...
   @JsonKey(name: 'Records')

@@ -1,10 +1,14 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'appsync_event.g.dart';
 
 /// App Sync Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsAppSyncEvent extends Event {
   @JsonKey(name: 'version')
   final String? version;

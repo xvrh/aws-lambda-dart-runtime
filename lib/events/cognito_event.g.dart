@@ -8,7 +8,7 @@ part of 'cognito_event.dart';
 
 AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) {
   return AwsCognitoEvent(
-    version: json['version'] as int?,
+    version: const PermissiveNullableIntConverter().fromJson(json['version']),
     triggerSource: json['triggerSource'] as String?,
     region: json['region'] as String?,
     userPoolId: json['userPoolId'] as String?,
@@ -27,7 +27,8 @@ AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
     <String, dynamic>{
-      'version': instance.version,
+      'version':
+          const PermissiveNullableIntConverter().toJson(instance.version),
       'triggerSource': instance.triggerSource,
       'region': instance.region,
       'userPoolId': instance.userPoolId,
@@ -61,7 +62,8 @@ Map<String, dynamic> _$AwsCognitoRequestToJson(AwsCognitoRequest instance) =>
       'userAttributes': instance.userAttributes,
       'validationData': instance.validationData,
       'clientMetadata': instance.clientMetadata,
-      'newDeviceUsed': instance.newDeviceUsed,
+      'newDeviceUsed':
+          const PermissiveBoolConverter().toJson(instance.newDeviceUsed),
       'groupConfiguration': instance.groupConfiguration,
       'password': instance.password,
       'codeParameter': instance.codeParameter,

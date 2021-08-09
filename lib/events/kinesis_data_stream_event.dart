@@ -1,10 +1,14 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'kinesis_data_stream_event.g.dart';
 
 /// Kinesis .....
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsKinesisDataStream extends Event {
   /// Partition Key ...
   @JsonKey()
@@ -42,6 +46,9 @@ class AwsKinesisDataStream extends Event {
 
 /// Kinesis record that is send via [AwsKinesisEvent].
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsKinesisDataStreamRecord {
   /// Data ...
   @JsonKey()
@@ -94,6 +101,9 @@ class AwsKinesisDataStreamRecord {
 
 /// Kinesis Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsKinesisDataStreamEvent extends Event {
   /// The SQS message records that have been send with the event.
   @JsonKey(name: 'Records')

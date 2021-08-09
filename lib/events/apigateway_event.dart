@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'apigateway_event.g.dart';
 
@@ -15,7 +16,7 @@ class AwsApiGatewayResponse {
   String? body;
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
-  bool? isBase64Encoded;
+  bool isBase64Encoded;
 
   // HTTP Status Code of the response of the API Gateway to the client.
   int? statusCode;
@@ -55,12 +56,11 @@ class AwsApiGatewayResponse {
   /// of the response is.
   AwsApiGatewayResponse({
     String? body,
-    bool isBase64Encoded = false,
+    this.isBase64Encoded = false,
     Map<String, String>? headers,
     int? statusCode,
   }) {
     this.body = body;
-    this.isBase64Encoded = isBase64Encoded;
     this.headers = headers ?? {'Content-Type': 'application/json'};
     this.statusCode = statusCode ?? HttpStatus.ok;
   }
@@ -68,6 +68,9 @@ class AwsApiGatewayResponse {
 
 /// API Gateway Event ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEvent extends Event {
   /// URL Path ...
   @JsonKey()
@@ -123,6 +126,9 @@ class AwsApiGatewayEvent extends Event {
 
 /// API Gateway Event Headers ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventHeaders {
   @JsonKey(name: 'Accept')
   final String? accept;
@@ -213,6 +219,9 @@ class AwsApiGatewayEventHeaders {
 
 /// API Gateway Event Request Context ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventRequestContext {
   @JsonKey()
   final String? accountId;
@@ -258,6 +267,9 @@ class AwsApiGatewayEventRequestContext {
 
 /// API Gateway Event Identity
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsApiGatewayEventRequestContextIdentity {
   @JsonKey()
   final String? cognitoIdentityPoolId;

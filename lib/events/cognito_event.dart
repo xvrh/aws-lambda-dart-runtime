@@ -1,9 +1,13 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'cognito_event.g.dart';
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoEvent extends Event {
   @JsonKey()
   final int? version;
@@ -46,6 +50,9 @@ class AwsCognitoEvent extends Event {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoRequest {
   @JsonKey()
   final Map<String, dynamic>? userAttributes;
@@ -57,7 +64,7 @@ class AwsCognitoRequest {
   final Map<String, String>? clientMetadata;
 
   @JsonKey()
-  final bool? newDeviceUsed;
+  final bool newDeviceUsed;
 
   @JsonKey()
   final AwsGroupConfiguration? groupConfiguration;
@@ -72,10 +79,11 @@ class AwsCognitoRequest {
       {this.userAttributes,
       this.validationData,
       this.clientMetadata,
-      this.newDeviceUsed,
+      bool? newDeviceUsed,
       this.codeParameter,
       this.password,
-      this.groupConfiguration});
+      this.groupConfiguration})
+      : newDeviceUsed = newDeviceUsed ?? false;
 
   factory AwsCognitoRequest.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoRequestFromJson(json);
@@ -84,6 +92,9 @@ class AwsCognitoRequest {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsCognitoResponse {
   @JsonKey()
   final bool? autoConfirmUser;
@@ -142,6 +153,9 @@ class AwsCognitoResponse {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsGroupConfiguration {
   @JsonKey()
   final List<String>? groupsToOverride;
@@ -168,6 +182,9 @@ class AwsGroupConfiguration {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsClaimOverrideDetails {
   @JsonKey()
   final Map<String, String>? claimsToAddOrOverride;

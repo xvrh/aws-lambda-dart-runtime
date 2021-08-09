@@ -29,7 +29,8 @@ Map<String, dynamic> _$AwsALBEventToJson(AwsALBEvent instance) =>
       'headers': instance.headers,
       'queryStringParameters': instance.queryStringParameters,
       'body': instance.body,
-      'isBase64Encoded': instance.isBase64Encoded,
+      'isBase64Encoded':
+          const PermissiveBoolConverter().toJson(instance.isBase64Encoded),
     };
 
 AwsALBEventContext _$AwsALBEventContextFromJson(Map<String, dynamic> json) {

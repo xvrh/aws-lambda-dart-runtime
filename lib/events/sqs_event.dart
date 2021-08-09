@@ -1,10 +1,14 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'sqs_event.g.dart';
 
 /// SQS Event Record that is send via [AwsSQSEvent].
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsSQSEventRecord extends Event {
   /// Id of the SQS message.
   @JsonKey()
@@ -63,6 +67,9 @@ class AwsSQSEventRecord extends Event {
 /// Event that is send via SQS to trigger for an innovation
 /// of a Lambda.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsSQSEvent extends Event {
   /// The SQS message records that have been send with the event.
   @JsonKey(name: 'Records')

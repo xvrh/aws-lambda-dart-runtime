@@ -12,7 +12,8 @@ AwsKinesisDataStream _$AwsKinesisDataStreamFromJson(Map<String, dynamic> json) {
     kinesisSchemaVersion: json['kinesisSchemaVersion'] as String?,
     data: json['data'] as String?,
     sequenceNumber: json['sequenceNumber'] as String?,
-    approximateArrivalTimestamp: json['approximateArrivalTimestamp'] as int?,
+    approximateArrivalTimestamp: const PermissiveNullableIntConverter()
+        .fromJson(json['approximateArrivalTimestamp']),
   );
 }
 
@@ -23,7 +24,8 @@ Map<String, dynamic> _$AwsKinesisDataStreamToJson(
       'kinesisSchemaVersion': instance.kinesisSchemaVersion,
       'data': instance.data,
       'sequenceNumber': instance.sequenceNumber,
-      'approximateArrivalTimestamp': instance.approximateArrivalTimestamp,
+      'approximateArrivalTimestamp': const PermissiveNullableIntConverter()
+          .toJson(instance.approximateArrivalTimestamp),
     };
 
 AwsKinesisDataStreamRecord _$AwsKinesisDataStreamRecordFromJson(

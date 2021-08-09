@@ -2,12 +2,16 @@ import 'dart:io';
 
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 'alb_event.g.dart';
 
 /// Event send by an Application Load Balancer to the
 /// invocation to the Lambda.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsALBEvent extends Event {
   /// Request context in which this request is executed.
   /// For the ELB this is the ARN of the target group.
@@ -37,7 +41,7 @@ class AwsALBEvent extends Event {
 
   /// Singals that the request is Base64 encoded.
   @JsonKey()
-  final bool? isBase64Encoded;
+  final bool isBase64Encoded;
 
   factory AwsALBEvent.fromJson(Map<String, dynamic> json) =>
       _$AwsALBEventFromJson(json);
@@ -51,8 +55,8 @@ class AwsALBEvent extends Event {
     this.headers,
     this.queryStringParameters,
     this.body,
-    this.isBase64Encoded,
-  });
+    bool? isBase64Encoded,
+  }) : isBase64Encoded = isBase64Encoded ?? false;
 }
 
 /// Response for a request from an Application Load Balancer.
@@ -63,7 +67,7 @@ class AwsALBResponse {
   String? body;
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
-  bool? isBase64Encoded;
+  bool isBase64Encoded;
 
   /// HTTP status code of the response of the API Gateway to the client.
   /// The default status code is `200 OK`.
@@ -108,9 +112,8 @@ class AwsALBResponse {
     bool? isBase64Encoded,
     int? statusCode,
     String? statusDescription,
-  }) {
+  }) : isBase64Encoded = isBase64Encoded ?? false {
     this.body = body ?? '';
-    this.isBase64Encoded = isBase64Encoded ?? false;
     this.headers = headers ?? {'Content-Type': 'text/html; charset=utf-8'};
     this.statusCode = statusCode ?? HttpStatus.ok;
     this.statusDescription = statusDescription ?? '200 OK';
@@ -119,6 +122,9 @@ class AwsALBResponse {
 
 /// AWS ALB Event Request Context ...
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsALBEventContext {
   factory AwsALBEventContext.fromJson(Map<String, dynamic> json) =>
       _$AwsALBEventContextFromJson(json);

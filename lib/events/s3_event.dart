@@ -1,11 +1,15 @@
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
+import '../utils/json_converters.dart';
 
 part 's3_event.g.dart';
 
 /// Representing a recorded S3 Event send to the Lambda.
 /// This can be send in batches of operations.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsS3Event extends Event {
   @JsonKey(name: 'Records')
   final List<AwsS3EventRecord>? records;
@@ -20,6 +24,9 @@ class AwsS3Event extends Event {
 
 /// Notifcation Event for Lambda in S3.
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsS3EventRecord {
   final String? eventVersion;
   final String? eventSource;
@@ -49,6 +56,9 @@ class AwsS3EventRecord {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsS3Data {
   String? s3SchemaVersion;
   String? configurationId;
@@ -65,6 +75,9 @@ class AwsS3Data {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsS3Bucket {
   String? name;
   AwsS3UserIdentity? ownerIdentity;
@@ -79,6 +92,9 @@ class AwsS3Bucket {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AWSS3EventObject {
   String? key;
   int? size;
@@ -94,6 +110,9 @@ class AWSS3EventObject {
 }
 
 @JsonSerializable()
+@PermissiveIntConverter()
+@PermissiveNullableIntConverter()
+@PermissiveBoolConverter()
 class AwsS3UserIdentity {
   String? principalId;
 
