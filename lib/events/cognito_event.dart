@@ -97,15 +97,23 @@ class AwsCognitoRequest {
   @JsonKey()
   final String? codeParameter;
 
-  const AwsCognitoRequest(
-      {this.userAttributes,
-      this.validationData,
-      this.clientMetadata,
-      bool? newDeviceUsed,
-      this.codeParameter,
-      this.password,
-      this.groupConfiguration})
-      : newDeviceUsed = newDeviceUsed ?? false;
+  @JsonKey()
+  final String? linkParameter;
+
+  @JsonKey()
+  final String? usernameParameter;
+
+  const AwsCognitoRequest({
+    this.userAttributes,
+    this.validationData,
+    this.clientMetadata,
+    bool? newDeviceUsed,
+    this.codeParameter,
+    this.linkParameter,
+    this.usernameParameter,
+    this.password,
+    this.groupConfiguration,
+  }) : newDeviceUsed = newDeviceUsed ?? false;
 
   factory AwsCognitoRequest.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoRequestFromJson(json);

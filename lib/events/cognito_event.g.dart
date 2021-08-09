@@ -57,6 +57,8 @@ AwsCognitoRequest _$AwsCognitoRequestFromJson(Map<String, dynamic> json) {
     ),
     newDeviceUsed: json['newDeviceUsed'] as bool?,
     codeParameter: json['codeParameter'] as String?,
+    linkParameter: json['linkParameter'] as String?,
+    usernameParameter: json['usernameParameter'] as String?,
     password: json['password'] as String?,
     groupConfiguration: json['groupConfiguration'] == null
         ? null
@@ -82,6 +84,8 @@ Map<String, dynamic> _$AwsCognitoRequestToJson(AwsCognitoRequest instance) {
   writeNotNull('groupConfiguration', instance.groupConfiguration);
   writeNotNull('password', instance.password);
   writeNotNull('codeParameter', instance.codeParameter);
+  writeNotNull('linkParameter', instance.linkParameter);
+  writeNotNull('usernameParameter', instance.usernameParameter);
   return val;
 }
 
