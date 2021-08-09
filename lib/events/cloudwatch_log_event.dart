@@ -11,7 +11,7 @@ part 'cloudwatch_log_event.g.dart';
 // }
 
 /// Cloudwatch Log Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

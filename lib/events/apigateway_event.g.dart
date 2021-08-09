@@ -27,18 +27,26 @@ AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsApiGatewayEventToJson(AwsApiGatewayEvent instance) =>
-    <String, dynamic>{
-      'path': instance.path,
-      'resource': instance.resource,
-      'httpMethod': instance.httpMethod,
-      'body': instance.body,
-      'headers': instance.headers,
-      'pathParameters': instance.pathParameters,
-      'queryStringParameters': instance.queryStringParameters,
-      'stageVariables': instance.stageVariables,
-      'requestContext': instance.requestContext,
-    };
+Map<String, dynamic> _$AwsApiGatewayEventToJson(AwsApiGatewayEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('path', instance.path);
+  writeNotNull('resource', instance.resource);
+  writeNotNull('httpMethod', instance.httpMethod);
+  writeNotNull('body', instance.body);
+  writeNotNull('headers', instance.headers);
+  writeNotNull('pathParameters', instance.pathParameters);
+  writeNotNull('queryStringParameters', instance.queryStringParameters);
+  writeNotNull('stageVariables', instance.stageVariables);
+  writeNotNull('requestContext', instance.requestContext);
+  return val;
+}
 
 AwsApiGatewayEventHeaders _$AwsApiGatewayEventHeadersFromJson(
     Map<String, dynamic> json) {
@@ -65,27 +73,39 @@ AwsApiGatewayEventHeaders _$AwsApiGatewayEventHeadersFromJson(
 }
 
 Map<String, dynamic> _$AwsApiGatewayEventHeadersToJson(
-        AwsApiGatewayEventHeaders instance) =>
-    <String, dynamic>{
-      'Accept': instance.accept,
-      'Accept-Encoding': instance.acceptEncoding,
-      'CloudFront-Forwarded-Proto': instance.cloudfrontForwardProto,
-      'CloudFront-Is-Desktop-Viewer': instance.cloudfrontIsDesktopViewer,
-      'CloudFront-Is-Mobile-Viewer': instance.cloudfrontIsMobileViewer,
-      'CloudFront-Is-SmartTV-Viewer': instance.cloudfrontIsSmartTvViewer,
-      'CloudFront-Is-Tablet-Viewer': instance.cloudfrontIsTabletViewer,
-      'CloudFront-Viewer-Country': instance.cloudfrontViewerCountry,
-      'Host': instance.host,
-      'Upgrade-Insecure-Requests': instance.upgradeInsecureRequests,
-      'User-Agent': instance.userAgent,
-      'Via': instance.via,
-      'X-Amz-Cf-Id': instance.xAmzCfId,
-      'X-Forwarded-For': instance.xForwardedFor,
-      'X-Forwarded-Port': instance.xForwardedPort,
-      'X-Forwarded-Proto': instance.xForwardedProto,
-      'Cache-Control': instance.cacheControl,
-      'X-Amzn-Trace-Id': instance.xAmznTraceId,
-    };
+    AwsApiGatewayEventHeaders instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Accept', instance.accept);
+  writeNotNull('Accept-Encoding', instance.acceptEncoding);
+  writeNotNull('CloudFront-Forwarded-Proto', instance.cloudfrontForwardProto);
+  writeNotNull(
+      'CloudFront-Is-Desktop-Viewer', instance.cloudfrontIsDesktopViewer);
+  writeNotNull(
+      'CloudFront-Is-Mobile-Viewer', instance.cloudfrontIsMobileViewer);
+  writeNotNull(
+      'CloudFront-Is-SmartTV-Viewer', instance.cloudfrontIsSmartTvViewer);
+  writeNotNull(
+      'CloudFront-Is-Tablet-Viewer', instance.cloudfrontIsTabletViewer);
+  writeNotNull('CloudFront-Viewer-Country', instance.cloudfrontViewerCountry);
+  writeNotNull('Host', instance.host);
+  writeNotNull('Upgrade-Insecure-Requests', instance.upgradeInsecureRequests);
+  writeNotNull('User-Agent', instance.userAgent);
+  writeNotNull('Via', instance.via);
+  writeNotNull('X-Amz-Cf-Id', instance.xAmzCfId);
+  writeNotNull('X-Forwarded-For', instance.xForwardedFor);
+  writeNotNull('X-Forwarded-Port', instance.xForwardedPort);
+  writeNotNull('X-Forwarded-Proto', instance.xForwardedProto);
+  writeNotNull('Cache-Control', instance.cacheControl);
+  writeNotNull('X-Amzn-Trace-Id', instance.xAmznTraceId);
+  return val;
+}
 
 AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
     Map<String, dynamic> json) {
@@ -105,17 +125,25 @@ AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
 }
 
 Map<String, dynamic> _$AwsApiGatewayEventRequestContextToJson(
-        AwsApiGatewayEventRequestContext instance) =>
-    <String, dynamic>{
-      'accountId': instance.accountId,
-      'resourceId': instance.resourceId,
-      'stage': instance.stage,
-      'requestId': instance.requestId,
-      'resourcePath': instance.resourcePath,
-      'httpMethod': instance.httpMethod,
-      'apiId': instance.apiId,
-      'identity': instance.identity,
-    };
+    AwsApiGatewayEventRequestContext instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('accountId', instance.accountId);
+  writeNotNull('resourceId', instance.resourceId);
+  writeNotNull('stage', instance.stage);
+  writeNotNull('requestId', instance.requestId);
+  writeNotNull('resourcePath', instance.resourcePath);
+  writeNotNull('httpMethod', instance.httpMethod);
+  writeNotNull('apiId', instance.apiId);
+  writeNotNull('identity', instance.identity);
+  return val;
+}
 
 AwsApiGatewayEventRequestContextIdentity
     _$AwsApiGatewayEventRequestContextIdentityFromJson(
@@ -137,17 +165,26 @@ AwsApiGatewayEventRequestContextIdentity
 }
 
 Map<String, dynamic> _$AwsApiGatewayEventRequestContextIdentityToJson(
-        AwsApiGatewayEventRequestContextIdentity instance) =>
-    <String, dynamic>{
-      'cognitoIdentityPoolId': instance.cognitoIdentityPoolId,
-      'accountId': instance.accountId,
-      'cognitoIdentityId': instance.cognitoIdentityId,
-      'caller': instance.caller,
-      'apiKey': instance.apiKey,
-      'sourceIp': instance.sourceIp,
-      'cognitoAuthenticationType': instance.cognitoAuthenticationType,
-      'cognitoAuthenticationProvider': instance.cognitoAuthenticationProvider,
-      'userArn': instance.userArn,
-      'userAgent': instance.userAgent,
-      'user': instance.user,
-    };
+    AwsApiGatewayEventRequestContextIdentity instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cognitoIdentityPoolId', instance.cognitoIdentityPoolId);
+  writeNotNull('accountId', instance.accountId);
+  writeNotNull('cognitoIdentityId', instance.cognitoIdentityId);
+  writeNotNull('caller', instance.caller);
+  writeNotNull('apiKey', instance.apiKey);
+  writeNotNull('sourceIp', instance.sourceIp);
+  writeNotNull('cognitoAuthenticationType', instance.cognitoAuthenticationType);
+  writeNotNull(
+      'cognitoAuthenticationProvider', instance.cognitoAuthenticationProvider);
+  writeNotNull('userArn', instance.userArn);
+  writeNotNull('userAgent', instance.userAgent);
+  writeNotNull('user', instance.user);
+  return val;
+}

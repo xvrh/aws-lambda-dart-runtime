@@ -14,13 +14,20 @@ AwsAlexaEventHeader _$AwsAlexaEventHeaderFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsAlexaEventHeaderToJson(
-        AwsAlexaEventHeader instance) =>
-    <String, dynamic>{
-      'payloadVersion': instance.payloadVersion,
-      'namespace': instance.namespace,
-      'name': instance.name,
-    };
+Map<String, dynamic> _$AwsAlexaEventHeaderToJson(AwsAlexaEventHeader instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('payloadVersion', instance.payloadVersion);
+  writeNotNull('namespace', instance.namespace);
+  writeNotNull('name', instance.name);
+  return val;
+}
 
 AwsAlexaEvent _$AwsAlexaEventFromJson(Map<String, dynamic> json) {
   return AwsAlexaEvent(
@@ -31,8 +38,16 @@ AwsAlexaEvent _$AwsAlexaEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsAlexaEventToJson(AwsAlexaEvent instance) =>
-    <String, dynamic>{
-      'header': instance.header,
-      'payload': instance.payload,
-    };
+Map<String, dynamic> _$AwsAlexaEventToJson(AwsAlexaEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('header', instance.header);
+  writeNotNull('payload', instance.payload);
+  return val;
+}

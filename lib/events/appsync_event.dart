@@ -5,7 +5,7 @@ import '../utils/json_converters.dart';
 part 'appsync_event.g.dart';
 
 /// App Sync Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

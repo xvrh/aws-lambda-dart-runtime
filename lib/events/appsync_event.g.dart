@@ -14,9 +14,17 @@ AwsAppSyncEvent _$AwsAppSyncEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsAppSyncEventToJson(AwsAppSyncEvent instance) =>
-    <String, dynamic>{
-      'version': instance.version,
-      'operation': instance.operation,
-      'payload': instance.payload,
-    };
+Map<String, dynamic> _$AwsAppSyncEventToJson(AwsAppSyncEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('version', instance.version);
+  writeNotNull('operation', instance.operation);
+  writeNotNull('payload', instance.payload);
+  return val;
+}

@@ -20,18 +20,26 @@ AwsSQSEventRecord _$AwsSQSEventRecordFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsSQSEventRecordToJson(AwsSQSEventRecord instance) =>
-    <String, dynamic>{
-      'messageId': instance.messageId,
-      'receiptHandle': instance.receiptHandle,
-      'body': instance.body,
-      'attributes': instance.attributes,
-      'messageAttributes': instance.messageAttributes,
-      'md5OfBody': instance.md5OfBody,
-      'eventSource': instance.eventSource,
-      'eventSourceARN': instance.eventSourceARN,
-      'awsRegion': instance.awsRegion,
-    };
+Map<String, dynamic> _$AwsSQSEventRecordToJson(AwsSQSEventRecord instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('messageId', instance.messageId);
+  writeNotNull('receiptHandle', instance.receiptHandle);
+  writeNotNull('body', instance.body);
+  writeNotNull('attributes', instance.attributes);
+  writeNotNull('messageAttributes', instance.messageAttributes);
+  writeNotNull('md5OfBody', instance.md5OfBody);
+  writeNotNull('eventSource', instance.eventSource);
+  writeNotNull('eventSourceARN', instance.eventSourceARN);
+  writeNotNull('awsRegion', instance.awsRegion);
+  return val;
+}
 
 AwsSQSEvent _$AwsSQSEventFromJson(Map<String, dynamic> json) {
   return AwsSQSEvent(
@@ -41,7 +49,15 @@ AwsSQSEvent _$AwsSQSEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsSQSEventToJson(AwsSQSEvent instance) =>
-    <String, dynamic>{
-      'Records': instance.records,
-    };
+Map<String, dynamic> _$AwsSQSEventToJson(AwsSQSEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Records', instance.records);
+  return val;
+}

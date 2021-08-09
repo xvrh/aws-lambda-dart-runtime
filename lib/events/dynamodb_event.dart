@@ -6,7 +6,7 @@ part 'dynamodb_event.g.dart';
 
 /// Event send by a DynamoDB stream that contains
 /// the updated records in the DynamoDB table.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -32,7 +32,7 @@ class AwsDynamoDBUpdateRecord extends Event {
 }
 
 /// DynamoDB Update Event Record ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -76,7 +76,7 @@ class AwsDynamoDBUpdateEventRecord {
 }
 
 /// DynamoDB Update Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

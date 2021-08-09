@@ -23,7 +23,7 @@ part 'cloudwatch_event.g.dart';
 ///   "detail": {}
 /// }
 /// ```
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

@@ -6,7 +6,7 @@ part 's3_event.g.dart';
 
 /// Representing a recorded S3 Event send to the Lambda.
 /// This can be send in batches of operations.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -23,7 +23,7 @@ class AwsS3Event extends Event {
 }
 
 /// Notifcation Event for Lambda in S3.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -55,7 +55,7 @@ class AwsS3EventRecord {
   Map<String, dynamic> toJson() => _$AwsS3EventRecordToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -74,7 +74,7 @@ class AwsS3Data {
   Map<String, dynamic> toJson() => _$AwsS3DataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -91,7 +91,7 @@ class AwsS3Bucket {
   Map<String, dynamic> toJson() => _$AwsS3BucketToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -109,7 +109,7 @@ class AWSS3EventObject {
   Map<String, dynamic> toJson() => _$AWSS3EventObjectToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

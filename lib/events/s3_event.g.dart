@@ -14,10 +14,18 @@ AwsS3Event _$AwsS3EventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsS3EventToJson(AwsS3Event instance) =>
-    <String, dynamic>{
-      'Records': instance.records,
-    };
+Map<String, dynamic> _$AwsS3EventToJson(AwsS3Event instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Records', instance.records);
+  return val;
+}
 
 AwsS3EventRecord _$AwsS3EventRecordFromJson(Map<String, dynamic> json) {
   return AwsS3EventRecord(
@@ -45,18 +53,26 @@ AwsS3EventRecord _$AwsS3EventRecordFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsS3EventRecordToJson(AwsS3EventRecord instance) =>
-    <String, dynamic>{
-      'eventVersion': instance.eventVersion,
-      'eventSource': instance.eventSource,
-      'awsRegion': instance.awsRegion,
-      'eventTime': instance.eventTime?.toIso8601String(),
-      'eventName': instance.eventName,
-      'userIdentity': instance.userIdentity,
-      'requestParameters': instance.requestParameters,
-      'responseElements': instance.responseElements,
-      's3': instance.s3,
-    };
+Map<String, dynamic> _$AwsS3EventRecordToJson(AwsS3EventRecord instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('eventVersion', instance.eventVersion);
+  writeNotNull('eventSource', instance.eventSource);
+  writeNotNull('awsRegion', instance.awsRegion);
+  writeNotNull('eventTime', instance.eventTime?.toIso8601String());
+  writeNotNull('eventName', instance.eventName);
+  writeNotNull('userIdentity', instance.userIdentity);
+  writeNotNull('requestParameters', instance.requestParameters);
+  writeNotNull('responseElements', instance.responseElements);
+  writeNotNull('s3', instance.s3);
+  return val;
+}
 
 AwsS3Data _$AwsS3DataFromJson(Map<String, dynamic> json) {
   return AwsS3Data(
@@ -71,12 +87,21 @@ AwsS3Data _$AwsS3DataFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsS3DataToJson(AwsS3Data instance) => <String, dynamic>{
-      's3SchemaVersion': instance.s3SchemaVersion,
-      'configurationId': instance.configurationId,
-      'bucket': instance.bucket,
-      'object': instance.object,
-    };
+Map<String, dynamic> _$AwsS3DataToJson(AwsS3Data instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('s3SchemaVersion', instance.s3SchemaVersion);
+  writeNotNull('configurationId', instance.configurationId);
+  writeNotNull('bucket', instance.bucket);
+  writeNotNull('object', instance.object);
+  return val;
+}
 
 AwsS3Bucket _$AwsS3BucketFromJson(Map<String, dynamic> json) {
   return AwsS3Bucket(
@@ -89,12 +114,20 @@ AwsS3Bucket _$AwsS3BucketFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsS3BucketToJson(AwsS3Bucket instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'ownerIdentity': instance.ownerIdentity,
-      'arn': instance.arn,
-    };
+Map<String, dynamic> _$AwsS3BucketToJson(AwsS3Bucket instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('ownerIdentity', instance.ownerIdentity);
+  writeNotNull('arn', instance.arn);
+  return val;
+}
 
 AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) {
   return AWSS3EventObject(
@@ -105,13 +138,22 @@ AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AWSS3EventObjectToJson(AWSS3EventObject instance) =>
-    <String, dynamic>{
-      'key': instance.key,
-      'size': const PermissiveNullableIntConverter().toJson(instance.size),
-      'eTag': instance.eTag,
-      'sequencer': instance.sequencer,
-    };
+Map<String, dynamic> _$AWSS3EventObjectToJson(AWSS3EventObject instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('key', instance.key);
+  writeNotNull(
+      'size', const PermissiveNullableIntConverter().toJson(instance.size));
+  writeNotNull('eTag', instance.eTag);
+  writeNotNull('sequencer', instance.sequencer);
+  return val;
+}
 
 AwsS3UserIdentity _$AwsS3UserIdentityFromJson(Map<String, dynamic> json) {
   return AwsS3UserIdentity(
@@ -119,7 +161,15 @@ AwsS3UserIdentity _$AwsS3UserIdentityFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsS3UserIdentityToJson(AwsS3UserIdentity instance) =>
-    <String, dynamic>{
-      'principalId': instance.principalId,
-    };
+Map<String, dynamic> _$AwsS3UserIdentityToJson(AwsS3UserIdentity instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('principalId', instance.principalId);
+  return val;
+}

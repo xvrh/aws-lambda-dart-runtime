@@ -18,15 +18,25 @@ AwsKinesisDataStream _$AwsKinesisDataStreamFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AwsKinesisDataStreamToJson(
-        AwsKinesisDataStream instance) =>
-    <String, dynamic>{
-      'partitionKey': instance.partitionKey,
-      'kinesisSchemaVersion': instance.kinesisSchemaVersion,
-      'data': instance.data,
-      'sequenceNumber': instance.sequenceNumber,
-      'approximateArrivalTimestamp': const PermissiveNullableIntConverter()
-          .toJson(instance.approximateArrivalTimestamp),
-    };
+    AwsKinesisDataStream instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('partitionKey', instance.partitionKey);
+  writeNotNull('kinesisSchemaVersion', instance.kinesisSchemaVersion);
+  writeNotNull('data', instance.data);
+  writeNotNull('sequenceNumber', instance.sequenceNumber);
+  writeNotNull(
+      'approximateArrivalTimestamp',
+      const PermissiveNullableIntConverter()
+          .toJson(instance.approximateArrivalTimestamp));
+  return val;
+}
 
 AwsKinesisDataStreamRecord _$AwsKinesisDataStreamRecordFromJson(
     Map<String, dynamic> json) {
@@ -46,17 +56,25 @@ AwsKinesisDataStreamRecord _$AwsKinesisDataStreamRecordFromJson(
 }
 
 Map<String, dynamic> _$AwsKinesisDataStreamRecordToJson(
-        AwsKinesisDataStreamRecord instance) =>
-    <String, dynamic>{
-      'kinesis': instance.kinesis,
-      'eventSource': instance.eventSource,
-      'eventID': instance.eventID,
-      'eventVersion': instance.eventVersion,
-      'eventName': instance.eventName,
-      'eventSourceARN': instance.eventSourceARN,
-      'invokeIdentityArn': instance.invokeIdentityArn,
-      'awsRegion': instance.awsRegion,
-    };
+    AwsKinesisDataStreamRecord instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('kinesis', instance.kinesis);
+  writeNotNull('eventSource', instance.eventSource);
+  writeNotNull('eventID', instance.eventID);
+  writeNotNull('eventVersion', instance.eventVersion);
+  writeNotNull('eventName', instance.eventName);
+  writeNotNull('eventSourceARN', instance.eventSourceARN);
+  writeNotNull('invokeIdentityArn', instance.invokeIdentityArn);
+  writeNotNull('awsRegion', instance.awsRegion);
+  return val;
+}
 
 AwsKinesisDataStreamEvent _$AwsKinesisDataStreamEventFromJson(
     Map<String, dynamic> json) {
@@ -69,7 +87,15 @@ AwsKinesisDataStreamEvent _$AwsKinesisDataStreamEventFromJson(
 }
 
 Map<String, dynamic> _$AwsKinesisDataStreamEventToJson(
-        AwsKinesisDataStreamEvent instance) =>
-    <String, dynamic>{
-      'Records': instance.records,
-    };
+    AwsKinesisDataStreamEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Records', instance.records);
+  return val;
+}

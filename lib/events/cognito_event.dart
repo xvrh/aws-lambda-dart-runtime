@@ -4,7 +4,7 @@ import '../utils/json_converters.dart';
 
 part 'cognito_event.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -49,7 +49,7 @@ class AwsCognitoEvent extends Event {
   Map<String, dynamic> toJson() => _$AwsCognitoEventToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -91,7 +91,7 @@ class AwsCognitoRequest {
   Map<String, dynamic> toJson() => _$AwsCognitoRequestToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -152,7 +152,7 @@ class AwsCognitoResponse {
   Map<String, dynamic> toJson() => _$AwsCognitoResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -181,7 +181,7 @@ class AwsGroupConfiguration {
   Map<String, dynamic> toJson() => _$AwsGroupConfigurationToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

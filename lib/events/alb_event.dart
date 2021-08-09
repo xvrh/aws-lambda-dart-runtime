@@ -8,7 +8,7 @@ part 'alb_event.g.dart';
 
 /// Event send by an Application Load Balancer to the
 /// invocation to the Lambda.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -121,7 +121,7 @@ class AwsALBResponse {
 }
 
 /// AWS ALB Event Request Context ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

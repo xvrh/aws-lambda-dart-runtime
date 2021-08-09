@@ -16,12 +16,20 @@ AwsDynamoDBUpdateRecord _$AwsDynamoDBUpdateRecordFromJson(
 }
 
 Map<String, dynamic> _$AwsDynamoDBUpdateRecordToJson(
-        AwsDynamoDBUpdateRecord instance) =>
-    <String, dynamic>{
-      'Keys': instance.keys,
-      'NewImage': instance.oldImage,
-      'OldImage': instance.newImage,
-    };
+    AwsDynamoDBUpdateRecord instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Keys', instance.keys);
+  writeNotNull('NewImage', instance.oldImage);
+  writeNotNull('OldImage', instance.newImage);
+  return val;
+}
 
 AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
     Map<String, dynamic> json) {
@@ -36,15 +44,23 @@ AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
 }
 
 Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
-        AwsDynamoDBUpdateEventRecord instance) =>
-    <String, dynamic>{
-      'eventId': instance.eventId,
-      'eventName': instance.eventName,
-      'eventSource': instance.eventSource,
-      'eventVersion': instance.eventVersion,
-      'awsRegion': instance.awsRegion,
-      'eventSourceARN': instance.eventSourceARN,
-    };
+    AwsDynamoDBUpdateEventRecord instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('eventId', instance.eventId);
+  writeNotNull('eventName', instance.eventName);
+  writeNotNull('eventSource', instance.eventSource);
+  writeNotNull('eventVersion', instance.eventVersion);
+  writeNotNull('awsRegion', instance.awsRegion);
+  writeNotNull('eventSourceARN', instance.eventSourceARN);
+  return val;
+}
 
 AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(
     Map<String, dynamic> json) {
@@ -57,7 +73,15 @@ AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(
 }
 
 Map<String, dynamic> _$AwsDynamoDBUpdateEventToJson(
-        AwsDynamoDBUpdateEvent instance) =>
-    <String, dynamic>{
-      'Records': instance.records,
-    };
+    AwsDynamoDBUpdateEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Records', instance.records);
+  return val;
+}

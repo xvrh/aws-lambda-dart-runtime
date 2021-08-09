@@ -14,7 +14,15 @@ AwsCloudwatchLogEvent _$AwsCloudwatchLogEventFromJson(
 }
 
 Map<String, dynamic> _$AwsCloudwatchLogEventToJson(
-        AwsCloudwatchLogEvent instance) =>
-    <String, dynamic>{
-      'awslogs': instance.awslogs,
-    };
+    AwsCloudwatchLogEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('awslogs', instance.awslogs);
+  return val;
+}

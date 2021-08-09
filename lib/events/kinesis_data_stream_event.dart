@@ -5,7 +5,7 @@ import '../utils/json_converters.dart';
 part 'kinesis_data_stream_event.g.dart';
 
 /// Kinesis .....
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -45,7 +45,7 @@ class AwsKinesisDataStream extends Event {
 }
 
 /// Kinesis record that is send via [AwsKinesisEvent].
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -100,7 +100,7 @@ class AwsKinesisDataStreamRecord {
 }
 
 /// Kinesis Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

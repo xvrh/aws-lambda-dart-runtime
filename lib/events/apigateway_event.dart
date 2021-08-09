@@ -67,7 +67,7 @@ class AwsApiGatewayResponse {
 }
 
 /// API Gateway Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -125,7 +125,7 @@ class AwsApiGatewayEvent extends Event {
 }
 
 /// API Gateway Event Headers ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -218,7 +218,7 @@ class AwsApiGatewayEventHeaders {
 }
 
 /// API Gateway Event Request Context ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -266,7 +266,7 @@ class AwsApiGatewayEventRequestContext {
 }
 
 /// API Gateway Event Identity
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

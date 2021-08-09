@@ -17,13 +17,23 @@ AwsKinesisFirehoseData _$AwsKinesisFirehoseDataFromJson(
 }
 
 Map<String, dynamic> _$AwsKinesisFirehoseDataToJson(
-        AwsKinesisFirehoseData instance) =>
-    <String, dynamic>{
-      'recordId': instance.recordId,
-      'approximateArrivalTimestamp': const PermissiveNullableIntConverter()
-          .toJson(instance.approximateArrivalTimestamp),
-      'data': instance.data,
-    };
+    AwsKinesisFirehoseData instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('recordId', instance.recordId);
+  writeNotNull(
+      'approximateArrivalTimestamp',
+      const PermissiveNullableIntConverter()
+          .toJson(instance.approximateArrivalTimestamp));
+  writeNotNull('data', instance.data);
+  return val;
+}
 
 AwsKinesisFirehoseDataEvent _$AwsKinesisFirehoseDataEventFromJson(
     Map<String, dynamic> json) {
@@ -38,10 +48,18 @@ AwsKinesisFirehoseDataEvent _$AwsKinesisFirehoseDataEventFromJson(
 }
 
 Map<String, dynamic> _$AwsKinesisFirehoseDataEventToJson(
-        AwsKinesisFirehoseDataEvent instance) =>
-    <String, dynamic>{
-      'invocationId': instance.invocationId,
-      'deliveryStreamArn': instance.deliveryStreamArn,
-      'region': instance.region,
-      'records': instance.records,
-    };
+    AwsKinesisFirehoseDataEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('invocationId', instance.invocationId);
+  writeNotNull('deliveryStreamArn', instance.deliveryStreamArn);
+  writeNotNull('region', instance.region);
+  writeNotNull('records', instance.records);
+  return val;
+}

@@ -5,7 +5,7 @@ import '../utils/json_converters.dart';
 part 'sqs_event.g.dart';
 
 /// SQS Event Record that is send via [AwsSQSEvent].
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -66,7 +66,7 @@ class AwsSQSEventRecord extends Event {
 
 /// Event that is send via SQS to trigger for an innovation
 /// of a Lambda.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

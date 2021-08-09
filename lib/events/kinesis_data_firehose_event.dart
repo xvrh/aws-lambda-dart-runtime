@@ -5,7 +5,7 @@ import '../utils/json_converters.dart';
 part 'kinesis_data_firehose_event.g.dart';
 
 /// Kinesis .....
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -33,7 +33,7 @@ class AwsKinesisFirehoseData extends Event {
 }
 
 /// Kinesis Event ...
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

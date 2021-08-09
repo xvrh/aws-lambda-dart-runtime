@@ -5,7 +5,7 @@ import '../utils/json_converters.dart';
 part 'alexa_event.g.dart';
 
 /// Header are meta information about the event.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()
@@ -32,7 +32,7 @@ class AwsAlexaEventHeader {
 
 /// Event send by an Application Load Balancer to the
 /// invocation to the Lambda.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 @PermissiveIntConverter()
 @PermissiveNullableIntConverter()
 @PermissiveBoolConverter()

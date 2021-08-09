@@ -21,17 +21,25 @@ AwsALBEvent _$AwsALBEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsALBEventToJson(AwsALBEvent instance) =>
-    <String, dynamic>{
-      'context': instance.context,
-      'httpMethod': instance.httpMethod,
-      'path': instance.path,
-      'headers': instance.headers,
-      'queryStringParameters': instance.queryStringParameters,
-      'body': instance.body,
-      'isBase64Encoded':
-          const PermissiveBoolConverter().toJson(instance.isBase64Encoded),
-    };
+Map<String, dynamic> _$AwsALBEventToJson(AwsALBEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('context', instance.context);
+  writeNotNull('httpMethod', instance.httpMethod);
+  writeNotNull('path', instance.path);
+  writeNotNull('headers', instance.headers);
+  writeNotNull('queryStringParameters', instance.queryStringParameters);
+  writeNotNull('body', instance.body);
+  writeNotNull('isBase64Encoded',
+      const PermissiveBoolConverter().toJson(instance.isBase64Encoded));
+  return val;
+}
 
 AwsALBEventContext _$AwsALBEventContextFromJson(Map<String, dynamic> json) {
   return AwsALBEventContext();

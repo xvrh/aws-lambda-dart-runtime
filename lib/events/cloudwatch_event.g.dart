@@ -20,14 +20,22 @@ AwsCloudwatchEvent _$AwsCloudwatchEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AwsCloudwatchEventToJson(AwsCloudwatchEvent instance) =>
-    <String, dynamic>{
-      'resources': instance.resources,
-      'region': instance.region,
-      'id': instance.id,
-      'source': instance.source,
-      'account': instance.account,
-      'detail-type': instance.detailType,
-      'detail': instance.detail,
-      'time': instance.time?.toIso8601String(),
-    };
+Map<String, dynamic> _$AwsCloudwatchEventToJson(AwsCloudwatchEvent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resources', instance.resources);
+  writeNotNull('region', instance.region);
+  writeNotNull('id', instance.id);
+  writeNotNull('source', instance.source);
+  writeNotNull('account', instance.account);
+  writeNotNull('detail-type', instance.detailType);
+  writeNotNull('detail', instance.detail);
+  writeNotNull('time', instance.time?.toIso8601String());
+  return val;
+}
