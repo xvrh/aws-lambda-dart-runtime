@@ -47,6 +47,28 @@ class AwsCognitoEvent extends Event {
       _$AwsCognitoEventFromJson(json);
 
   Map<String, dynamic> toJson() => _$AwsCognitoEventToJson(this);
+
+  AwsCognitoEvent copyWith({
+    int? version,
+    String? triggerSource,
+    String? region,
+    String? userPoolId,
+    String? userName,
+    Map<String, String>? callerContext,
+    AwsCognitoRequest? request,
+    AwsCognitoResponse? response,
+  }) {
+    return AwsCognitoEvent(
+      version: version ?? this.version,
+      triggerSource: triggerSource ?? this.triggerSource,
+      region: region ?? this.region,
+      userPoolId: userPoolId ?? this.userPoolId,
+      userName: userName ?? this.userName,
+      callerContext: callerContext ?? this.callerContext,
+      request: request ?? this.request,
+      response: response ?? this.response,
+    );
+  }
 }
 
 @JsonSerializable(includeIfNull: false)
